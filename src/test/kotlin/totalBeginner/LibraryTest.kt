@@ -42,13 +42,13 @@ class LibraryTest : TestCase() {
     }
 
     fun testFindBook() {
-        Assert.assertEquals(bk1, Library.findBook("Title1", bks2))
-        Assert.assertNull(Library.findBook("Title11", bks2))
+        Assert.assertEquals(bk1, Library.findItem("Title1", bks2, { Book.getTitle(it) }))
+        Assert.assertNull(Library.findItem("Title11", bks2, { Book.getTitle(it) }))
     }
 
     fun testFindBorrower() {
-        Assert.assertEquals(br1, Library.findBorrower("Borrower1", brs2))
-        Assert.assertNull(Library.findBorrower("Borrower11", brs2))
+        Assert.assertEquals(br1, Library.findItem("Borrower1", brs2, { Borrower.getName(it) }))
+        Assert.assertNull(Library.findItem("Borrower11", brs2, { Borrower.getName(it) }))
     }
 
     fun testGetBooksForBorrower() {
