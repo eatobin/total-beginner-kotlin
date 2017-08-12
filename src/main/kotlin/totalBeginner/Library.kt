@@ -2,7 +2,7 @@ package totalBeginner
 
 object Library {
 
-    fun <T> addItem(x: T, xs: List<T>): List<T> {
+    fun <A> addItem(x: A, xs: List<A>): List<A> {
         if (xs.contains(x))
             return xs
         else
@@ -26,12 +26,10 @@ object Library {
         } else return coll.first()
     }
 
-//    fun findBorrower2(n: String, brs: List<Borrower>, f: (Borrower) -> String): Borrower? {
-//        val coll: List<Borrower> = brs.filter { it -> f(it) == n }
-//        if (coll.isEmpty()) {
-//            return null
-//        } else return coll.first()
-//    }
+    fun <A> findItem(tgt: String, coll: List<A>, f: (A) -> String): A? {
+        val result: List<A> = coll.filter { it -> f(it) == tgt }
+        return result.firstOrNull()
+    }
 
     fun getBooksForBorrower(br: Borrower, bks: List<Book>): List<Book> =
             bks.filter { Book.getBorrower(it) == br }
