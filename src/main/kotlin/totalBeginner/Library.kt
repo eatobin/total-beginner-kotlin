@@ -88,4 +88,16 @@ object Library {
         return bookList
     }
 
+    fun borrowersToJsonString(brs: List<Borrower>): String {
+        val gson = Gson()
+        val borrowerString: String = gson.toJson(brs)
+        return borrowerString
+    }
+
+    fun booksToJsonString(bks: List<Book>): String {
+        val gson = Gson()
+        val bookString: String = gson.toJson(bks)
+        return bookString
+    }
+
 }

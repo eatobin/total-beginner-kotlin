@@ -83,4 +83,12 @@ class LibraryTest : TestCase() {
         Assert.assertEquals(bks1, Library.jsonStringToBooks(jsonStringBooks))
     }
 
+    fun testBorrowersToJsonString() {
+        Assert.assertEquals("[{\"name\":\"Borrower1\",\"maxBooks\":1},{\"name\":\"Borrower2\",\"maxBooks\":2}]", Library.borrowersToJsonString(brs1))
+    }
+
+    fun testBooksToJsonString() {
+        Assert.assertEquals("[{\"title\":\"Title1\",\"author\":\"Author1\",\"borrower\":{\"name\":\"Borrower1\",\"maxBooks\":1}},{\"title\":\"Title2\",\"author\":\"Author2\"}]", Library.booksToJsonString(bks1))
+    }
+
 }
