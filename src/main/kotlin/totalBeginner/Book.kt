@@ -1,6 +1,6 @@
 package totalBeginner
 
-data class Book(val title: String, val author: String, val borrower: Borrower? = null) {
+data class Book(val title: String, val author: String, val borrower: Borrower?) {
 
     companion object {
 
