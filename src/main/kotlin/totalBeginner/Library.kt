@@ -1,5 +1,8 @@
 package totalBeginner
 
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+
 object Library {
 
     fun <A> addItem(x: A, xs: List<A>): List<A> {
@@ -71,6 +74,18 @@ object Library {
                 "\n" +
                 "--- End of Status Report ---" +
                 "\n"
+    }
+
+    fun jsonStringToBorrowers(jsonString: String): List<Borrower> {
+        val gson = Gson()
+        val borrowerList: List<Borrower> = gson.fromJson(jsonString, object : TypeToken<List<Borrower>>() {}.type)
+        return borrowerList
+    }
+
+    fun jsonStringToBooks(jsonString: String): List<Book> {
+        val gson = Gson()
+        val bookList: List<Book> = gson.fromJson(jsonString, object : TypeToken<List<Book>>() {}.type)
+        return bookList
     }
 
 }

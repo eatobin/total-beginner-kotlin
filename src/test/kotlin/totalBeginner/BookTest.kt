@@ -7,10 +7,10 @@ class BookTest : TestCase() {
 
     val br1 = Borrower(name = "Borrower1", maxBooks = 1)
     val bk1 = Book(title = "Title1", author = "Author1", borrower = br1)
-    val bk2 = Book(title = "Title2", author = "Author2")
+    val bk2 = Book(title = "Title2", author = "Author2", borrower = null)
 
     fun testMakeBookNull() {
-        Assert.assertEquals(bk2, Book("Title2", "Author2"))
+        Assert.assertEquals(bk2, Book("Title2", "Author2", borrower = null))
     }
 
     fun testMakeBookSomeone() {
