@@ -5,7 +5,7 @@ import org.junit.Assert
 
 class BorrowerTest : TestCase() {
 
-    val br1 = Borrower(name = "Borrower1", maxBooks = 1)
+    val br1 = Borrower.makeBorrower("Borrower1", 1)
 
     fun testBorrowerConstructor() {
         Assert.assertEquals(br1, Borrower("Borrower1", 1))
