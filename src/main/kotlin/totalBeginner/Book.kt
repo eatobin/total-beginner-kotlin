@@ -17,12 +17,12 @@ data class Book(val title: String, val author: String, val borrower: Borrower?) 
 
         fun setBorrower(br: Borrower?, bk: Book): Book = bk.copy(borrower = br)
 
-        fun availableString(bk: Book): String {
+        private fun availableString(bk: Book): String {
             val br = getBorrower(bk)
-            if (br == null) {
-                return "Available"
+            return if (br == null) {
+                "Available"
             } else {
-                return "Checked out to " + Borrower.getName(br)
+                "Checked out to " + Borrower.getName(br)
             }
         }
 
