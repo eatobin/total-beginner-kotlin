@@ -78,26 +78,22 @@ object Library {
 
     fun jsonStringToBorrowers(jsonString: String): List<Borrower> {
         val gson = Gson()
-        val borrowerList: List<Borrower> = gson.fromJson(jsonString, object : TypeToken<List<Borrower>>() {}.type)
-        return borrowerList
+        return gson.fromJson(jsonString, object : TypeToken<List<Borrower>>() {}.type)
     }
 
     fun jsonStringToBooks(jsonString: String): List<Book> {
         val gson = Gson()
-        val bookList: List<Book> = gson.fromJson(jsonString, object : TypeToken<List<Book>>() {}.type)
-        return bookList
+        return gson.fromJson(jsonString, object : TypeToken<List<Book>>() {}.type)
     }
 
     fun borrowersToJsonString(brs: List<Borrower>): String {
         val gson = Gson()
-        val borrowerString: String = gson.toJson(brs)
-        return borrowerString
+        return gson.toJson(brs)
     }
 
     fun booksToJsonString(bks: List<Book>): String {
         val gson = Gson()
-        val bookString: String = gson.toJson(bks)
-        return bookString
+        return gson.toJson(bks)
     }
 
 }
