@@ -6,10 +6,10 @@ import com.google.gson.reflect.TypeToken
 object Library {
 
     fun <A> addItem(x: A, xs: List<A>): List<A> {
-        if (xs.contains(x))
-            return xs
+        return if (xs.contains(x))
+            xs
         else
-            return xs.plusElement(x)
+            xs.plusElement(x)
     }
 
     fun removeBook(bk: Book, bks: List<Book>): List<Book> =
@@ -23,38 +23,38 @@ object Library {
     fun getBooksForBorrower(br: Borrower, bks: List<Book>): List<Book> =
             bks.filter { Book.getBorrower(it) == br }
 
-    fun numBooksOut(br: Borrower, bks: List<Book>): Int =
+    private fun numBooksOut(br: Borrower, bks: List<Book>): Int =
             getBooksForBorrower(br, bks).count()
 
-    fun notMaxedOut(br: Borrower, bks: List<Book>): Boolean =
+    private fun notMaxedOut(br: Borrower, bks: List<Book>): Boolean =
             numBooksOut(br, bks) < Borrower.getMaxBooks(br)
 
-    fun bookNotOut(bk: Book): Boolean =
+    private fun bookNotOut(bk: Book): Boolean =
             Book.getBorrower(bk) == null
 
-    fun bookOut(bk: Book): Boolean =
+    private fun bookOut(bk: Book): Boolean =
             Book.getBorrower(bk) != null
 
     fun checkOut(n: String, t: String, brs: List<Borrower>, bks: List<Book>): List<Book> {
         val mbk: Book? = findItem(t, bks, { Book.getTitle(it) })
         val mbr: Borrower? = findItem(n, brs, { Borrower.getName(it) })
-        if (mbk != null && mbr != null && notMaxedOut(mbr, bks) && bookNotOut(mbk)) {
+        return if (mbk != null && mbr != null && notMaxedOut(mbr, bks) && bookNotOut(mbk)) {
             val newBook = Book.setBorrower(mbr, mbk)
             val fewerBooks = removeBook(mbk, bks)
-            return addItem(newBook, fewerBooks)
-        } else return bks
+            addItem(newBook, fewerBooks)
+        } else bks
     }
 
     fun checkIn(t: String, bks: List<Book>): List<Book> {
         val mbk: Book? = findItem(t, bks, { Book.getTitle(it) })
-        if (mbk != null && bookOut(mbk)) {
+        return if (mbk != null && bookOut(mbk)) {
             val newBook = Book.setBorrower(null, mbk)
             val fewerBooks = removeBook(mbk, bks)
-            return addItem(newBook, fewerBooks)
-        } else return bks
+            addItem(newBook, fewerBooks)
+        } else bks
     }
 
-    fun libraryToString(bks: List<Book>, brs: List<Borrower>): String {
+    private fun libraryToString(bks: List<Book>, brs: List<Borrower>): String {
         return "Test Library: " +
                 bks.count() +
                 " books; " +
