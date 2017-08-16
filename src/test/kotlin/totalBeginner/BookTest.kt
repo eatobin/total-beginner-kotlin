@@ -5,9 +5,9 @@ import org.junit.Assert
 
 class BookTest : TestCase() {
 
-    val br1 = Borrower.makeBorrower("Borrower1", 1)
-    val bk1 = Book.makeBook("Title1", "Author1", br1)
-    val bk2 = Book.makeBook("Title2", "Author2", null)
+    private val br1 = Borrower.makeBorrower("Borrower1", 1)
+    private val bk1 = Book.makeBook("Title1", "Author1", br1)
+    private val bk2 = Book.makeBook("Title2", "Author2", null)
 
     fun testGetTitle() {
         Assert.assertEquals("Title1", Book.getTitle(bk1))
