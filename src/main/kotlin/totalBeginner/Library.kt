@@ -68,9 +68,9 @@ object Library {
                 "\n" +
                 libraryToString(bks, brs) + "\n" +
                 "\n" +
-                bks.map { it -> Book.bookToString(it) }.joinToString("\n") + "\n" +
+                bks.joinToString("\n") { it -> Book.bookToString(it) } + "\n" +
                 "\n" +
-                brs.map { it -> Borrower.borrowerToString(it) }.joinToString("\n") + "\n" +
+                brs.joinToString("\n") { it -> Borrower.borrowerToString(it) } + "\n" +
                 "\n" +
                 "--- End of Status Report ---" +
                 "\n"
