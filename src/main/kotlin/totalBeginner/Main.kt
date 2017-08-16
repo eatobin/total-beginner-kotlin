@@ -1,18 +1,19 @@
-//package totalBeginner
-//
-//object Main {
-//
-//    @JvmStatic fun main(args: Array<String>) {
-//
-//        var tvBorrowers: List<Borrower> = emptyList()
-//        var tvBooks: List<Book> = emptyList()
-//
-//        tvBorrowers = Library.addBorrower(Borrower("Jim", 3), tvBorrowers)
-//        tvBorrowers = Library.addBorrower(Borrower("Sue", 3), tvBorrowers)
-//        tvBooks = Library.addBook(Book("War And Peace", "Tolstoy"), tvBooks)
-//        tvBooks = Library.addBook(Book("Great Expectations", "Dickens"), tvBooks)
-//        println("\nJust created new library")
-//        println(Library.statusToString(tvBooks, tvBorrowers))
+package totalBeginner
+
+object Main {
+
+    @JvmStatic
+    fun main(args: Array<String>) {
+
+        var tvBorrowers: List<Borrower> = emptyList()
+        var tvBooks: List<Book> = emptyList()
+
+        tvBorrowers = Library.addItem(Borrower.makeBorrower("Jim", 3), tvBorrowers)
+        tvBorrowers = Library.addItem(Borrower.makeBorrower("Sue", 3), tvBorrowers)
+        tvBooks = Library.addItem(Book.makeBook("War And Peace", "Tolstoy", null), tvBooks)
+        tvBooks = Library.addItem(Book.makeBook("Great Expectations", "Dickens", null), tvBooks)
+        println("\nJust created new library")
+        println(Library.statusToString(tvBooks, tvBorrowers))
 //
 //        println("Check out War And Peace to Sue")
 //        tvBooks = Library.checkOut("Sue", "War And Peace", tvBorrowers, tvBooks)
@@ -61,5 +62,5 @@
 //        println("And... that's all...")
 //        println("Thanks - bye!\n")
 //
-//    }
-//}
+    }
+}
