@@ -77,6 +77,38 @@ object Main {
         tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileBefore)
         tvBooks = newBooksFromJsonString(jsonBooksFile)
         println(Library.statusToString(tvBooks, tvBorrowers))
+        println("Add... a new borrower:")
+        tvBorrowers = Library.addItem(Borrower.makeBorrower("BorrowerNew", 300), tvBorrowers)
+        println(Library.statusToString(tvBooks, tvBorrowers))
+
+        println("Save the revised borrowers to \"borrowers-after.json\"")
+        val jsonBrsStr = Library.borrowersToJsonString(tvBorrowers)
+        writeJsonStringToFile(jsonBrsStr, "borrowers-after.json")
+
+        println("Clear the whole library again:")
+        tvBorrowers = emptyList()
+        tvBooks = emptyList()
+        println(Library.statusToString(tvBooks, tvBorrowers))
+
+        println("Then read in the revised library from \"borrowers-after.json\" and \"books-before.json\":")
+        tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileAfter)
+        tvBooks = newBooksFromJsonString(jsonBooksFile)
+        println(Library.statusToString(tvBooks, tvBorrowers))
+
+        println("Last... delete the file \"borrowers-after.json\"")
+        File(jsonBorrowersFileAfter).delete()
+        tvBorrowers = emptyList()
+        tvBooks = emptyList()
+
+        println("Then try to make a library using the deleted \"borrowers-after.json\" and \"borrowers-after.json\":")
+        tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileAfter)
+        tvBooks = newBooksFromJsonString(jsonBorrowersFileAfter)
+        println(Library.statusToString(tvBooks, tvBorrowers))
+
+//        println("And if we read in a file with mal-formed json content... like \"bad-borrowers.json\" and \"borrowers-after.json\":")
+//        tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileBad)
+//        tvBooks = newBooksFromJsonString(jsonBorrowersFileAfter)
+//        println(Library.statusToString(tvBooks, tvBorrowers))
 
     }
 
@@ -101,6 +133,10 @@ object Main {
         return if (mJsonBrsStr != null) {
             Library.jsonStringToBorrowers(mJsonBrsStr)
         } else emptyList()
+    }
+
+    private fun writeJsonStringToFile(js: String, fp: String) {
+        File(fp).bufferedWriter().use { out -> out.write(js) }
     }
 
 }
