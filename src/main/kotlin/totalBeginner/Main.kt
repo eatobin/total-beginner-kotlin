@@ -1,5 +1,8 @@
 package totalBeginner
 
+import java.io.BufferedReader
+import java.io.File
+
 object Main {
 
     @JvmStatic
@@ -7,6 +10,12 @@ object Main {
 
         var tvBorrowers: List<Borrower> = emptyList()
         var tvBooks: List<Book> = emptyList()
+
+        val jsonBorrowersFileBefore = "borrowers-before.json"
+        val jsonBooksFile = "books-before.json"
+        val jsonBorrowersFileAfter = "borrowers-after.json"
+        val jsonBorrowersFileBad = "bad-borrowers.json"
+        val emptyFile = "empty.json"
 
         tvBorrowers = Library.addItem(Borrower.makeBorrower("Jim", 3), tvBorrowers)
         tvBorrowers = Library.addItem(Borrower.makeBorrower("Sue", 3), tvBorrowers)
@@ -59,8 +68,39 @@ object Main {
         println("No change to Test Library:")
         println(Library.statusToString(tvBooks, tvBorrowers))
 
-        println("And... that's all...")
-        println("Thanks - bye!\n")
-//
+        println("Okay... let's finish with some persistence. First clear the whole library:")
+        tvBorrowers = emptyList()
+        tvBooks = emptyList()
+        println(Library.statusToString(tvBooks, tvBorrowers))
+
+        println("Lets read in a new library from \"borrowers-before.json\" and \"books-before.json\":")
+        tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileBefore)
+        tvBooks = newBooksFromJsonString(jsonBooksFile)
+        println(Library.statusToString(tvBooks, tvBorrowers))
+
     }
+
+    private fun readFileIntoJsonString(fp: String): String? {
+        return try {
+            val bufferedReader: BufferedReader = File(fp).bufferedReader()
+            bufferedReader.use { it.readText() }
+        } catch (e: Exception) {
+            null
+        }
+    }
+
+    private fun newBooksFromJsonString(bksfp: String): List<Book> {
+        val mJsonBksStr: String? = Main.readFileIntoJsonString(bksfp)
+        return if (mJsonBksStr != null) {
+            Library.jsonStringToBooks(mJsonBksStr)
+        } else emptyList()
+    }
+
+    private fun newBorrowersFromJsonString(brsfp: String): List<Borrower> {
+        val mJsonBrsStr: String? = Main.readFileIntoJsonString(brsfp)
+        return if (mJsonBrsStr != null) {
+            Library.jsonStringToBorrowers(mJsonBrsStr)
+        } else emptyList()
+    }
+
 }
