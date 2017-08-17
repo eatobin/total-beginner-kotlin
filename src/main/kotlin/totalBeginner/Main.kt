@@ -105,10 +105,10 @@ object Main {
         tvBooks = newBooksFromJsonString(jsonBorrowersFileAfter)
         println(Library.statusToString(tvBooks, tvBorrowers))
 
-//        println("And if we read in a file with mal-formed json content... like \"bad-borrowers.json\" and \"borrowers-after.json\":")
-//        tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileBad)
-//        tvBooks = newBooksFromJsonString(jsonBorrowersFileAfter)
-//        println(Library.statusToString(tvBooks, tvBorrowers))
+        println("And if we read in a file with mal-formed json content... like \"bad-borrowers.json\" and \"borrowers-after.json\":")
+        tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileBad)
+        tvBooks = newBooksFromJsonString(jsonBorrowersFileAfter)
+        println(Library.statusToString(tvBooks, tvBorrowers))
 
     }
 
