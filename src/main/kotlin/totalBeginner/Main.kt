@@ -97,8 +97,6 @@ object Main {
 
         println("Last... delete the file \"borrowers-after.json\"")
         File(jsonBorrowersFileAfter).delete()
-        tvBorrowers = emptyList()
-        tvBooks = emptyList()
 
         println("Then try to make a library using the deleted \"borrowers-after.json\" and \"borrowers-after.json\":")
         tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileAfter)
@@ -109,6 +107,14 @@ object Main {
         tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileBad)
         tvBooks = newBooksFromJsonString(jsonBorrowersFileAfter)
         println(Library.statusToString(tvBooks, tvBorrowers))
+
+        println("Or how about reading in an empty file... \"empty.json\" (for borrowers and books):")
+        tvBorrowers = newBorrowersFromJsonString(emptyFile)
+        tvBooks = newBooksFromJsonString(emptyFile)
+        println(Library.statusToString(tvBooks, tvBorrowers))
+
+        println("And... that's all...")
+        println("Thanks - bye!\n")
 
     }
 

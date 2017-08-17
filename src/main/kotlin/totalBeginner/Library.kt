@@ -78,19 +78,19 @@ object Library {
 
     fun jsonStringToBorrowers(jsonString: String): List<Borrower> {
         val gson = Gson()
-        try {
-            return gson.fromJson(jsonString, object : TypeToken<List<Borrower>>() {}.type)
+        return try {
+            gson.fromJson(jsonString, object : TypeToken<List<Borrower>>() {}.type)
         } catch (e: Exception) {
-            return emptyList()
+            emptyList()
         }
     }
 
     fun jsonStringToBooks(jsonString: String): List<Book> {
         val gson = Gson()
-        try {
-            return gson.fromJson(jsonString, object : TypeToken<List<Book>>() {}.type)
+        return try {
+            gson.fromJson(jsonString, object : TypeToken<List<Book>>() {}.type)
         } catch (e: Exception) {
-            return emptyList()
+            emptyList()
         }
     }
 
