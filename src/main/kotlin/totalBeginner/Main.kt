@@ -1,5 +1,6 @@
 package totalBeginner
 
+import arrow.core.Either
 import java.io.BufferedReader
 import java.io.File
 
@@ -124,6 +125,15 @@ object Main {
             bufferedReader.use { it.readText() }
         } catch (e: Exception) {
             null
+        }
+    }
+
+    fun readFileIntoJsonString2(fp: String): Either<String, String> {
+        return try {
+            val bufferedReader: BufferedReader = File(fp).bufferedReader()
+            Either.right(bufferedReader.use { it.readText() })
+        } catch (e: Exception) {
+            Either.left("File read error.")
         }
     }
 
