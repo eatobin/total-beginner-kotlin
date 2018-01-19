@@ -87,8 +87,8 @@ class LibraryTest : TestCase() {
     fun testReadFileIntoJsonString2() {
         val s1 = Main.readFileIntoJsonString2("noFile.json")
         Assert.assertEquals(Either.left("File read error."), s1)
-        val s2 = Main.readFileIntoJsonString2("little.json")
-        Assert.assertEquals(Either.right("[{\"name\":\"Borrower1001\"}]"), s2)
+        val s2 = Main.readFileIntoJsonString2("empty.json")
+        Assert.assertEquals(Either.right("[]\n"), s2)
     }
 
     fun testBorrowersToJsonString() {
