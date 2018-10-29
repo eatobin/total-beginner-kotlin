@@ -36,8 +36,8 @@ object Library {
             Book.getBorrower(bk) != null
 
     fun checkOut(n: String, t: String, brs: List<Borrower>, bks: List<Book>): List<Book> {
-        val mbk: Book? = findItem(t, bks, { Book.getTitle(it) })
-        val mbr: Borrower? = findItem(n, brs, { Borrower.getName(it) })
+        val mbk: Book? = findItem(t, bks) { Book.getTitle(it) }
+        val mbr: Borrower? = findItem(n, brs) { Borrower.getName(it) }
         return if (mbk != null && mbr != null && notMaxedOut(mbr, bks) && bookNotOut(mbk)) {
             val newBook = Book.setBorrower(mbr, mbk)
             val fewerBooks = removeBook(mbk, bks)
@@ -46,7 +46,7 @@ object Library {
     }
 
     fun checkIn(t: String, bks: List<Book>): List<Book> {
-        val mbk: Book? = findItem(t, bks, { Book.getTitle(it) })
+        val mbk: Book? = findItem(t, bks) { Book.getTitle(it) }
         return if (mbk != null && bookOut(mbk)) {
             val newBook = Book.setBorrower(null, mbk)
             val fewerBooks = removeBook(mbk, bks)
