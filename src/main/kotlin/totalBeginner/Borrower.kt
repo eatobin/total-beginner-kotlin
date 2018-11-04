@@ -4,8 +4,6 @@ data class Borrower(val name: String, val maxBooks: Int) {
 
     companion object {
 
-        fun makeBorrower(name: String, maxBooks: Int): Borrower = Borrower(name = name, maxBooks = maxBooks)
-
         fun getName(br: Borrower): String = br.name
 
         fun setName(n: String, br: Borrower): Borrower = br.copy(name = n)

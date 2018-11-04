@@ -18,10 +18,10 @@ object Main {
         val jsonBorrowersFileBad = "bad-borrowers.json"
         val emptyFile = "empty.json"
 
-        tvBorrowers = Library.addItem(Borrower.makeBorrower("Jim", 3), tvBorrowers)
-        tvBorrowers = Library.addItem(Borrower.makeBorrower("Sue", 3), tvBorrowers)
-        tvBooks = Library.addItem(Book.makeBook("War And Peace", "Tolstoy", null), tvBooks)
-        tvBooks = Library.addItem(Book.makeBook("Great Expectations", "Dickens", null), tvBooks)
+        tvBorrowers = Library.addItem(Borrower("Jim", 3), tvBorrowers)
+        tvBorrowers = Library.addItem(Borrower("Sue", 3), tvBorrowers)
+        tvBooks = Library.addItem(Book("War And Peace", "Tolstoy", null), tvBooks)
+        tvBooks = Library.addItem(Book("Great Expectations", "Dickens", null), tvBooks)
         println("\nJust created new library")
         println(Library.statusToString(tvBooks, tvBorrowers))
 
@@ -36,8 +36,8 @@ object Main {
         println(Library.statusToString(tvBooks, tvBorrowers))
 
         println("Add Eric and The Cat In The Hat")
-        tvBorrowers = Library.addItem(Borrower.makeBorrower("Eric", 1), tvBorrowers)
-        tvBooks = Library.addItem(Book.makeBook("The Cat In The Hat", "Dr. Seuss", null), tvBooks)
+        tvBorrowers = Library.addItem(Borrower("Eric", 1), tvBorrowers)
+        tvBooks = Library.addItem(Book("The Cat In The Hat", "Dr. Seuss", null), tvBooks)
         println("Check Out Dr. Seuss to Eric")
         tvBooks = Library.checkOut("Eric", "The Cat In The Hat", tvBorrowers, tvBooks)
         println(Library.statusToString(tvBooks, tvBorrowers))
@@ -45,12 +45,12 @@ object Main {
         println("Now let's do some BAD stuff...\n")
 
         println("Add a borrower that already exists (Borrower('Jim', 3))")
-        tvBorrowers = Library.addItem(Borrower.makeBorrower("Jim", 3), tvBorrowers)
+        tvBorrowers = Library.addItem(Borrower("Jim", 3), tvBorrowers)
         println("No change to Test Library:")
         println(Library.statusToString(tvBooks, tvBorrowers))
 
         println("Add a book that already exists (Book('War And Peace', 'Tolstoy'))")
-        tvBooks = Library.addItem(Book.makeBook("War And Peace", "Tolstoy", null), tvBooks)
+        tvBooks = Library.addItem(Book("War And Peace", "Tolstoy", null), tvBooks)
         println("No change to Test Library:")
         println(Library.statusToString(tvBooks, tvBorrowers))
 
@@ -79,7 +79,7 @@ object Main {
         tvBooks = newBooksFromJsonString(jsonBooksFile)
         println(Library.statusToString(tvBooks, tvBorrowers))
         println("Add... a new borrower:")
-        tvBorrowers = Library.addItem(Borrower.makeBorrower("BorrowerNew", 300), tvBorrowers)
+        tvBorrowers = Library.addItem(Borrower("BorrowerNew", 300), tvBorrowers)
         println(Library.statusToString(tvBooks, tvBorrowers))
 
         println("Save the revised borrowers to \"borrowers-after.json\"")

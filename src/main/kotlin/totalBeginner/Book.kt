@@ -4,9 +4,6 @@ data class Book(val title: String, val author: String, val borrower: Borrower?) 
 
     companion object {
 
-        fun makeBook(title: String, author: String, borrower: Borrower?): Book =
-                Book(title = title, author = author, borrower = borrower)
-
         fun getTitle(bk: Book): String = bk.title
 
         fun getAuthor(bk: Book): String = bk.author
