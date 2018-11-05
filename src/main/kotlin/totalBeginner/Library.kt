@@ -1,7 +1,9 @@
 package totalBeginner
 
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+//import com.google.gson.Gson
+//import com.google.gson.reflect.TypeToken
+import kotlinx.serialization.json.JSON
+import kotlinx.serialization.list
 
 object Library {
 
@@ -76,32 +78,58 @@ object Library {
                 "\n"
     }
 
+//    fun jsonStringToBorrowers(jsonString: String): List<Borrower> {
+//        val gson = Gson()
+//        return try {
+//            gson.fromJson(jsonString, object : TypeToken<List<Borrower>>() {}.type)
+//        } catch (e: Exception) {
+//            emptyList()
+//        }
+//    }
+
     fun jsonStringToBorrowers(jsonString: String): List<Borrower> {
-        val gson = Gson()
         return try {
-            gson.fromJson(jsonString, object : TypeToken<List<Borrower>>() {}.type)
+            JSON.parse(Borrower.serializer().list, jsonString)
+//            JSON.parse(Borrower.serializer().list, jsonString)
         } catch (e: Exception) {
             emptyList()
         }
     }
+
+
+//    fun jsonStringToBooks(jsonString: String): List<Book> {
+//        val gson = Gson()
+//        return try {
+//            gson.fromJson(jsonString, object : TypeToken<List<Book>>() {}.type)
+//        } catch (e: Exception) {
+//            emptyList()
+//        }
+//    }
 
     fun jsonStringToBooks(jsonString: String): List<Book> {
-        val gson = Gson()
         return try {
-            gson.fromJson(jsonString, object : TypeToken<List<Book>>() {}.type)
+            JSON.parse(Book.serializer().list, jsonString)
         } catch (e: Exception) {
             emptyList()
         }
     }
 
+//    fun borrowersToJsonString(brs: List<Borrower>): String {
+//        val gson = Gson()
+//        return gson.toJson(brs)
+//    }
+
     fun borrowersToJsonString(brs: List<Borrower>): String {
-        val gson = Gson()
-        return gson.toJson(brs)
+        return JSON.stringify(Borrower.serializer().list, brs)
     }
 
+//    fun booksToJsonString(bks: List<Book>): String {
+//        val gson = Gson()
+//        return gson.toJson(bks)
+//    }
+
     fun booksToJsonString(bks: List<Book>): String {
-        val gson = Gson()
-        return gson.toJson(bks)
+        return JSON.stringify(Book.serializer().list, bks)
     }
 
 }

@@ -1,5 +1,8 @@
 package totalBeginner
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Borrower(val name: String, val maxBooks: Int) {
 
     companion object {
