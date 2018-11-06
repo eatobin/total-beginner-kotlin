@@ -10,10 +10,6 @@ class BorrowerTest : TestCase() {
 
     private val br1 = Borrower("Borrower1", 1)
 
-    fun testBorrowerConstructor() {
-        assertEquals(br1, Borrower("Borrower1", 1))
-    }
-
     fun testGetName() {
         assertEquals("Borrower1", getName(br1))
     }
