@@ -90,7 +90,6 @@ object Library {
     fun jsonStringToBorrowers(jsonString: String): List<Borrower> {
         return try {
             JSON.parse(Borrower.serializer().list, jsonString)
-//            JSON.parse(Borrower.serializer().list, jsonString)
         } catch (e: Exception) {
             emptyList()
         }

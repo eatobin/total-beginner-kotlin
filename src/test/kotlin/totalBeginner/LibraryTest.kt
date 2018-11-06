@@ -26,6 +26,7 @@ class LibraryTest : TestCase() {
 
     private val jsonStringBorrowers = "[{\"name\":\"Borrower1\",\"maxBooks\":1},{\"name\":\"Borrower2\",\"maxBooks\":2}]"
     private val jsonStringBooks = "[{\"title\":\"Title1\",\"author\":\"Author1\",\"borrower\":{\"name\":\"Borrower1\",\"maxBooks\":1}},{\"title\":\"Title2\",\"author\":\"Author2\",\"borrower\":null}]"
+    private val jsonStringBooksShort = "[{\"title\":\"Title1\",\"author\":\"Author1\",\"borrower\":{\"name\":\"Borrower1\",\"maxBooks\":1}},{\"title\":\"Title2\",\"author\":\"Author2\"}]"
 
     private val ss = "\n--- Status Report of Test Library ---\n\nTest Library: 3 books; 3 borrowers.\n\nTitle1 by Author1; Checked out to Borrower1\nTitle2 by Author2; Available\nTitle3 by Author3; Checked out to Borrower3\n\nBorrower1 (1 books)\nBorrower2 (2 books)\nBorrower3 (3 books)\n\n--- End of Status Report ---\n"
 
@@ -81,6 +82,7 @@ class LibraryTest : TestCase() {
     fun testJsonStringToObjects() {
         assertEquals(brs1, Library.jsonStringToBorrowers(jsonStringBorrowers))
         assertEquals(bks1, Library.jsonStringToBooks(jsonStringBooks))
+        assertEquals(bks1, Library.jsonStringToBooks(jsonStringBooksShort))
     }
 
     fun testReadFileIntoJsonString2() {
@@ -95,7 +97,7 @@ class LibraryTest : TestCase() {
     }
 
     fun testBooksToJsonString() {
-        assertEquals("[{\"title\":\"Title1\",\"author\":\"Author1\",\"borrower\":{\"name\":\"Borrower1\",\"maxBooks\":1}},{\"title\":\"Title2\",\"author\":\"Author2\"}]", Library.booksToJsonString(bks1))
+        assertEquals("[{\"title\":\"Title1\",\"author\":\"Author1\",\"borrower\":{\"name\":\"Borrower1\",\"maxBooks\":1}},{\"title\":\"Title2\",\"author\":\"Author2\",\"borrower\":null}]", Library.booksToJsonString(bks1))
     }
 
 }

@@ -1,9 +1,10 @@
 package totalBeginner
 
+import kotlinx.serialization.Optional
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Book(val title: String, val author: String, val borrower: Borrower?) {
+data class Book(val title: String, val author: String, @Optional val borrower: Borrower? = null) {
 
     companion object {
 
