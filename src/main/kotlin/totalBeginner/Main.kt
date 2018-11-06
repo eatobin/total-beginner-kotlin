@@ -135,14 +135,14 @@ object Main {
     }
 
     private fun newBooksFromJsonString(bksfp: String): List<Book> {
-        val mJsonBksStr: String? = Main.readFileIntoJsonString(bksfp)
+        val mJsonBksStr: String? = readFileIntoJsonString(bksfp)
         return if (mJsonBksStr != null) {
             jsonStringToBooks(mJsonBksStr)
         } else emptyList()
     }
 
     private fun newBorrowersFromJsonString(brsfp: String): List<Borrower> {
-        val mJsonBrsStr: String? = Main.readFileIntoJsonString(brsfp)
+        val mJsonBrsStr: String? = readFileIntoJsonString(brsfp)
         return if (mJsonBrsStr != null) {
             jsonStringToBorrowers(mJsonBrsStr)
         } else emptyList()
