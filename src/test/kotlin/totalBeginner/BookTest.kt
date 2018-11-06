@@ -1,6 +1,12 @@
 package totalBeginner
 
 import junit.framework.TestCase
+import totalBeginner.Book.Companion.bookToString
+import totalBeginner.Book.Companion.getAuthor
+import totalBeginner.Book.Companion.getBorrower
+import totalBeginner.Book.Companion.getTitle
+import totalBeginner.Book.Companion.setAuthor
+import totalBeginner.Book.Companion.setBorrower
 
 class BookTest : TestCase() {
 
@@ -9,44 +15,44 @@ class BookTest : TestCase() {
     private val bk2 = Book("Title2", "Author2", null)
 
     fun testGetTitle() {
-        assertEquals("Title1", Book.getTitle(bk1))
+        assertEquals("Title1", getTitle(bk1))
     }
 
     fun testGetAuthor() {
-        assertEquals("Author2", Book.getAuthor(bk2))
+        assertEquals("Author2", getAuthor(bk2))
     }
 
     fun testSetAuthor() {
-        assertEquals(Book(title = "Title1", author = "Author11", borrower = br1), Book.setAuthor("Author11", bk1))
+        assertEquals(Book(title = "Title1", author = "Author11", borrower = br1), setAuthor("Author11", bk1))
     }
 
     fun testGetBorrowerSomeone() {
-        assertEquals(br1, Book.getBorrower(bk1))
+        assertEquals(br1, getBorrower(bk1))
     }
 
     fun testGetBorrowerNull() {
-        assertNull(Book.getBorrower(bk2))
+        assertNull(getBorrower(bk2))
     }
 
     fun testSetBorrowerSomeone() {
         val nbr = Book(title = "Title2", author = "Author2",
                 borrower = Borrower(name = "BorrowerNew", maxBooks = 111))
         assertEquals(nbr,
-                Book.setBorrower(Borrower(name = "BorrowerNew", maxBooks = 111), bk2))
+                setBorrower(Borrower(name = "BorrowerNew", maxBooks = 111), bk2))
     }
 
     fun testSetBorrowerNull() {
         val nbr = Book(title = "Title1", author = "Author1",
                 borrower = null)
-        assertEquals(nbr, Book.setBorrower(null, bk1))
+        assertEquals(nbr, setBorrower(null, bk1))
     }
 
     fun testBookToStringSomeone() {
-        assertEquals("Title1 by Author1; Checked out to Borrower1", Book.bookToString(bk1))
+        assertEquals("Title1 by Author1; Checked out to Borrower1", bookToString(bk1))
     }
 
     fun testBookToStringNull() {
-        assertEquals("Title2 by Author2; Available", Book.bookToString(bk2))
+        assertEquals("Title2 by Author2; Available", bookToString(bk2))
     }
 
 }

@@ -1,9 +1,14 @@
 package totalBeginner
 
-//import com.google.gson.Gson
-//import com.google.gson.reflect.TypeToken
 import kotlinx.serialization.json.JSON
 import kotlinx.serialization.list
+import totalBeginner.Book.Companion.bookToString
+import totalBeginner.Book.Companion.getBorrower
+import totalBeginner.Book.Companion.getTitle
+import totalBeginner.Book.Companion.setBorrower
+import totalBeginner.Borrower.Companion.borrowerToString
+import totalBeginner.Borrower.Companion.getMaxBooks
+import totalBeginner.Borrower.Companion.getName
 
 object Library {
 
@@ -23,34 +28,34 @@ object Library {
     }
 
     fun getBooksForBorrower(br: Borrower, bks: List<Book>): List<Book> =
-            bks.filter { Book.getBorrower(it) == br }
+            bks.filter { getBorrower(it) == br }
 
     private fun numBooksOut(br: Borrower, bks: List<Book>): Int =
             getBooksForBorrower(br, bks).count()
 
     private fun notMaxedOut(br: Borrower, bks: List<Book>): Boolean =
-            numBooksOut(br, bks) < Borrower.getMaxBooks(br)
+            numBooksOut(br, bks) < getMaxBooks(br)
 
     private fun bookNotOut(bk: Book): Boolean =
-            Book.getBorrower(bk) == null
+            getBorrower(bk) == null
 
     private fun bookOut(bk: Book): Boolean =
-            Book.getBorrower(bk) != null
+            getBorrower(bk) != null
 
     fun checkOut(n: String, t: String, brs: List<Borrower>, bks: List<Book>): List<Book> {
-        val mbk: Book? = findItem(t, bks) { Book.getTitle(it) }
-        val mbr: Borrower? = findItem(n, brs) { Borrower.getName(it) }
+        val mbk: Book? = findItem(t, bks) { getTitle(it) }
+        val mbr: Borrower? = findItem(n, brs) { getName(it) }
         return if (mbk != null && mbr != null && notMaxedOut(mbr, bks) && bookNotOut(mbk)) {
-            val newBook = Book.setBorrower(mbr, mbk)
+            val newBook = setBorrower(mbr, mbk)
             val fewerBooks = removeBook(mbk, bks)
             addItem(newBook, fewerBooks)
         } else bks
     }
 
     fun checkIn(t: String, bks: List<Book>): List<Book> {
-        val mbk: Book? = findItem(t, bks) { Book.getTitle(it) }
+        val mbk: Book? = findItem(t, bks) { getTitle(it) }
         return if (mbk != null && bookOut(mbk)) {
-            val newBook = Book.setBorrower(null, mbk)
+            val newBook = setBorrower(null, mbk)
             val fewerBooks = removeBook(mbk, bks)
             addItem(newBook, fewerBooks)
         } else bks
@@ -70,22 +75,13 @@ object Library {
                 "\n" +
                 libraryToString(bks, brs) + "\n" +
                 "\n" +
-                bks.joinToString("\n") { it -> Book.bookToString(it) } + "\n" +
+                bks.joinToString("\n") { it -> bookToString(it) } + "\n" +
                 "\n" +
-                brs.joinToString("\n") { it -> Borrower.borrowerToString(it) } + "\n" +
+                brs.joinToString("\n") { it -> borrowerToString(it) } + "\n" +
                 "\n" +
                 "--- End of Status Report ---" +
                 "\n"
     }
-
-//    fun jsonStringToBorrowers(jsonString: String): List<Borrower> {
-//        val gson = Gson()
-//        return try {
-//            gson.fromJson(jsonString, object : TypeToken<List<Borrower>>() {}.type)
-//        } catch (e: Exception) {
-//            emptyList()
-//        }
-//    }
 
     fun jsonStringToBorrowers(jsonString: String): List<Borrower> {
         return try {
@@ -95,16 +91,6 @@ object Library {
         }
     }
 
-
-//    fun jsonStringToBooks(jsonString: String): List<Book> {
-//        val gson = Gson()
-//        return try {
-//            gson.fromJson(jsonString, object : TypeToken<List<Book>>() {}.type)
-//        } catch (e: Exception) {
-//            emptyList()
-//        }
-//    }
-
     fun jsonStringToBooks(jsonString: String): List<Book> {
         return try {
             JSON.parse(Book.serializer().list, jsonString)
@@ -113,19 +99,9 @@ object Library {
         }
     }
 
-//    fun borrowersToJsonString(brs: List<Borrower>): String {
-//        val gson = Gson()
-//        return gson.toJson(brs)
-//    }
-
     fun borrowersToJsonString(brs: List<Borrower>): String {
         return JSON.stringify(Borrower.serializer().list, brs)
     }
-
-//    fun booksToJsonString(bks: List<Book>): String {
-//        val gson = Gson()
-//        return gson.toJson(bks)
-//    }
 
     fun booksToJsonString(bks: List<Book>): String {
         return JSON.stringify(Book.serializer().list, bks)

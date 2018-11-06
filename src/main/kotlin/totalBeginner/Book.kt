@@ -2,6 +2,7 @@ package totalBeginner
 
 import kotlinx.serialization.Optional
 import kotlinx.serialization.Serializable
+import totalBeginner.Borrower.Companion.getName
 
 @Serializable
 data class Book(val title: String, val author: String, @Optional val borrower: Borrower? = null) {
@@ -23,7 +24,7 @@ data class Book(val title: String, val author: String, @Optional val borrower: B
             return if (br == null) {
                 "Available"
             } else {
-                "Checked out to " + Borrower.getName(br)
+                "Checked out to " + getName(br)
             }
         }
 
