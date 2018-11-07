@@ -87,6 +87,7 @@ object Library {
         return try {
             JSON.parse(Borrower.serializer().list, jsonString)
         } catch (e: Exception) {
+            e.printStackTrace()
             emptyList()
         }
     }
@@ -95,6 +96,7 @@ object Library {
         return try {
             JSON.parse(Book.serializer().list, jsonString)
         } catch (e: Exception) {
+            e.printStackTrace()
             emptyList()
         }
     }
