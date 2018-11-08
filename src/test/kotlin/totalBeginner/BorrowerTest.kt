@@ -1,33 +1,34 @@
 package totalBeginner
 
-import junit.framework.TestCase
+//import junit.framework.TestCase
+import io.kotlintest.shouldBe
+import io.kotlintest.specs.StringSpec
 import totalBeginner.Borrower.Companion.borrowerToString
+import totalBeginner.Borrower.Companion.getMaxBooks
 import totalBeginner.Borrower.Companion.getName
 import totalBeginner.Borrower.Companion.setMaxBooks
 import totalBeginner.Borrower.Companion.setName
 
-class BorrowerTest : TestCase() {
+private val br1 = Borrower("Borrower1", 1)
 
-    private val br1 = Borrower("Borrower1", 1)
-
-    fun testGetName() {
-        assertEquals("Borrower1", getName(br1))
+class BorrowerTest : StringSpec({
+    "getName should return the Borrower name" {
+        getName(br1) shouldBe "Borrower1"
     }
 
-    fun testSetName() {
-        assertEquals(br1, setName("Borrower1", Borrower("Jack", 1)))
+    "setName should set the Borrower name" {
+        setName("Borrower1", Borrower("Jack", 1)) shouldBe br1
     }
 
-    fun testGetMaxBooks() {
-        assertEquals(1, Borrower.getMaxBooks(br1))
+    "getMaxBooks should return the Borrower maxBooks" {
+        getMaxBooks(br1) shouldBe 1
     }
 
-    fun testSetMaxBooks() {
-        assertEquals(Borrower("Borrower1", 11), setMaxBooks(11, br1))
+    "setMaxBooks should set the Borrower maxBooks" {
+        setMaxBooks(11, br1) shouldBe Borrower("Borrower1", 11)
     }
 
-    fun testToString() {
-        assertEquals("Borrower1 (1 books)", borrowerToString(br1))
+    "the Borrower string should print" {
+        borrowerToString(br1) shouldBe "Borrower1 (1 books)"
     }
-
-}
+})
