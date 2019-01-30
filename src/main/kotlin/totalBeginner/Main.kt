@@ -9,6 +9,7 @@ import totalBeginner.Library.jsonStringToBorrowers
 import totalBeginner.Library.statusToString
 import java.io.BufferedReader
 import java.io.File
+import kotlin.system.exitProcess
 
 object Main {
 
@@ -130,7 +131,8 @@ object Main {
             val bufferedReader: BufferedReader = File(fp).bufferedReader()
             bufferedReader.use { it.readText() }
         } catch (e: Exception) {
-            null
+            println("The requested file does not exist..")
+            exitProcess(1)
         }
     }
 
