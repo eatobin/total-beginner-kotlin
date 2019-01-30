@@ -1,17 +1,17 @@
-package totalBeginner
+package total_beginner
 
 import junit.framework.TestCase
-import totalBeginner.Library.addItem
-import totalBeginner.Library.booksToJsonString
-import totalBeginner.Library.borrowersToJsonString
-import totalBeginner.Library.checkIn
-import totalBeginner.Library.checkOut
-import totalBeginner.Library.findItem
-import totalBeginner.Library.getBooksForBorrower
-import totalBeginner.Library.jsonStringToBooks
-import totalBeginner.Library.jsonStringToBorrowers
-import totalBeginner.Library.removeBook
-import totalBeginner.Library.statusToString
+import total_beginner.Library.addItem
+import total_beginner.Library.booksToJsonString
+import total_beginner.Library.borrowersToJsonString
+import total_beginner.Library.checkIn
+import total_beginner.Library.checkOut
+import total_beginner.Library.findItem
+import total_beginner.Library.getBooksForBorrower
+import total_beginner.Library.jsonStringToBooks
+import total_beginner.Library.jsonStringToBorrowers
+import total_beginner.Library.removeBook
+import total_beginner.Library.statusToString
 
 class LibraryTest : TestCase() {
 

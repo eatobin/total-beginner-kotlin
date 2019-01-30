@@ -1,14 +1,14 @@
-package totalBeginner
+package total_beginner
 
 import kotlinx.serialization.json.JSON
 import kotlinx.serialization.list
-import totalBeginner.Book.Companion.bookToString
-import totalBeginner.Book.Companion.getBorrower
-import totalBeginner.Book.Companion.getTitle
-import totalBeginner.Book.Companion.setBorrower
-import totalBeginner.Borrower.Companion.borrowerToString
-import totalBeginner.Borrower.Companion.getMaxBooks
-import totalBeginner.Borrower.Companion.getName
+import total_beginner.Book.Companion.bookToString
+import total_beginner.Book.Companion.getBorrower
+import total_beginner.Book.Companion.getTitle
+import total_beginner.Book.Companion.setBorrower
+import total_beginner.Borrower.Companion.borrowerToString
+import total_beginner.Borrower.Companion.getMaxBooks
+import total_beginner.Borrower.Companion.getName
 
 object Library {
 

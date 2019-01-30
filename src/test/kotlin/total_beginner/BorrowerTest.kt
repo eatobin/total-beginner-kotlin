@@ -1,12 +1,12 @@
-package totalBeginner
+package total_beginner
 
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
-import totalBeginner.Borrower.Companion.borrowerToString
-import totalBeginner.Borrower.Companion.getMaxBooks
-import totalBeginner.Borrower.Companion.getName
-import totalBeginner.Borrower.Companion.setMaxBooks
-import totalBeginner.Borrower.Companion.setName
+import total_beginner.Borrower.Companion.borrowerToString
+import total_beginner.Borrower.Companion.getMaxBooks
+import total_beginner.Borrower.Companion.getName
+import total_beginner.Borrower.Companion.setMaxBooks
+import total_beginner.Borrower.Companion.setName
 
 private val br1 = Borrower("Borrower1", 1)
 

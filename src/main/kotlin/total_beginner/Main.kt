@@ -1,12 +1,12 @@
-package totalBeginner
+package total_beginner
 
-import totalBeginner.Library.addItem
-import totalBeginner.Library.borrowersToJsonString
-import totalBeginner.Library.checkIn
-import totalBeginner.Library.checkOut
-import totalBeginner.Library.jsonStringToBooks
-import totalBeginner.Library.jsonStringToBorrowers
-import totalBeginner.Library.statusToString
+import total_beginner.Library.addItem
+import total_beginner.Library.borrowersToJsonString
+import total_beginner.Library.checkIn
+import total_beginner.Library.checkOut
+import total_beginner.Library.jsonStringToBooks
+import total_beginner.Library.jsonStringToBorrowers
+import total_beginner.Library.statusToString
 import java.io.BufferedReader
 import java.io.File
 import kotlin.system.exitProcess

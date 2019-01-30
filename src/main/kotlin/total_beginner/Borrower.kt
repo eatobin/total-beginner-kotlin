@@ -1,4 +1,4 @@
-package totalBeginner
+package total_beginner
 
 import kotlinx.serialization.Serializable
 

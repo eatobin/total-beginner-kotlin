@@ -1,12 +1,12 @@
-package totalBeginner
+package total_beginner
 
 import junit.framework.TestCase
-import totalBeginner.Book.Companion.bookToString
-import totalBeginner.Book.Companion.getAuthor
-import totalBeginner.Book.Companion.getBorrower
-import totalBeginner.Book.Companion.getTitle
-import totalBeginner.Book.Companion.setAuthor
-import totalBeginner.Book.Companion.setBorrower
+import total_beginner.Book.Companion.bookToString
+import total_beginner.Book.Companion.getAuthor
+import total_beginner.Book.Companion.getBorrower
+import total_beginner.Book.Companion.getTitle
+import total_beginner.Book.Companion.setAuthor
+import total_beginner.Book.Companion.setBorrower
 
 class BookTest : TestCase() {
 
