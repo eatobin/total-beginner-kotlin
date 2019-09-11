@@ -10,7 +10,7 @@ import total_beginner.Book.Companion.setBorrower
 
 private val br1 = Borrower("Borrower1", 1)
 private val bk1 = Book("Title1", "Author1", br1)
-private val bk2 = Book("Title2", "Author2", null)
+private val bk2 = Book("Title2", "Author2")
 
 class BookTest : StringSpec({
     "getTitle should return the Book title" {
@@ -40,9 +40,6 @@ class BookTest : StringSpec({
     }
 
 })
-
-
-
 
 
 //    fun testSetBorrowerNull() {
