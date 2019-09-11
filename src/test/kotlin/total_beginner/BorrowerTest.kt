@@ -11,6 +11,7 @@ import total_beginner.Borrower.Companion.setName
 private val br1 = Borrower("Borrower1", 1)
 
 class BorrowerTest : StringSpec({
+
     "getName should return the Borrower name" {
         getName(br1).shouldBe("Borrower1")
     }
@@ -30,4 +31,5 @@ class BorrowerTest : StringSpec({
     "the Borrower string should print" {
         borrowerToString(br1).shouldBe("Borrower1 (1 books)")
     }
+
 })

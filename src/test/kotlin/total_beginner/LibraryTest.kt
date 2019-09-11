@@ -2,14 +2,14 @@ package total_beginner
 
 import junit.framework.TestCase
 import total_beginner.Library.addItem
-import total_beginner.Library.booksToJsonString
-import total_beginner.Library.borrowersToJsonString
+// import total_beginner.Library.booksToJsonString
+// import total_beginner.Library.borrowersToJsonString
 import total_beginner.Library.checkIn
 import total_beginner.Library.checkOut
 import total_beginner.Library.findItem
 import total_beginner.Library.getBooksForBorrower
-import total_beginner.Library.jsonStringToBooks
-import total_beginner.Library.jsonStringToBorrowers
+// import total_beginner.Library.jsonStringToBooks
+// import total_beginner.Library.jsonStringToBorrowers
 import total_beginner.Library.removeBook
 import total_beginner.Library.statusToString
 
@@ -34,9 +34,9 @@ class LibraryTest : TestCase() {
     private val bks5 = listOf(bk2, Book(title = "Title1", author = "Author1", borrower = null))
 
 
-    private val jsonStringBorrowers = "[{\"name\":\"Borrower1\",\"maxBooks\":1},{\"name\":\"Borrower2\",\"maxBooks\":2}]"
-    private val jsonStringBooks = "[{\"title\":\"Title1\",\"author\":\"Author1\",\"borrower\":{\"name\":\"Borrower1\",\"maxBooks\":1}},{\"title\":\"Title2\",\"author\":\"Author2\",\"borrower\":null}]"
-    private val jsonStringBooksShort = "[{\"title\":\"Title1\",\"author\":\"Author1\",\"borrower\":{\"name\":\"Borrower1\",\"maxBooks\":1}},{\"title\":\"Title2\",\"author\":\"Author2\"}]"
+//    private val jsonStringBorrowers = "[{\"name\":\"Borrower1\",\"maxBooks\":1},{\"name\":\"Borrower2\",\"maxBooks\":2}]"
+//    private val jsonStringBooks = "[{\"title\":\"Title1\",\"author\":\"Author1\",\"borrower\":{\"name\":\"Borrower1\",\"maxBooks\":1}},{\"title\":\"Title2\",\"author\":\"Author2\",\"borrower\":null}]"
+//    private val jsonStringBooksShort = "[{\"title\":\"Title1\",\"author\":\"Author1\",\"borrower\":{\"name\":\"Borrower1\",\"maxBooks\":1}},{\"title\":\"Title2\",\"author\":\"Author2\"}]"
 
     private val ss = "\n--- Status Report of Test Library ---\n\nTest Library: 3 books; 3 borrowers.\n\nTitle1 by Author1; Checked out to Borrower1\nTitle2 by Author2; Available\nTitle3 by Author3; Checked out to Borrower3\n\nBorrower1 (1 books)\nBorrower2 (2 books)\nBorrower3 (3 books)\n\n--- End of Status Report ---\n"
 
@@ -89,18 +89,18 @@ class LibraryTest : TestCase() {
         assertEquals(ss, statusToString(bks2, brs2))
     }
 
-    fun testJsonStringToObjects() {
-        assertEquals(brs1, jsonStringToBorrowers(jsonStringBorrowers))
-        assertEquals(bks1, jsonStringToBooks(jsonStringBooks))
-        assertEquals(bks1, jsonStringToBooks(jsonStringBooksShort))
-    }
+    // fun testJsonStringToObjects() {
+    //     assertEquals(brs1, jsonStringToBorrowers(jsonStringBorrowers))
+    //     assertEquals(bks1, jsonStringToBooks(jsonStringBooks))
+    //     assertEquals(bks1, jsonStringToBooks(jsonStringBooksShort))
+    // }
 
-    fun testBorrowersToJsonString() {
-        assertEquals("[{\"name\":\"Borrower1\",\"maxBooks\":1},{\"name\":\"Borrower2\",\"maxBooks\":2}]", borrowersToJsonString(brs1))
-    }
+    // fun testBorrowersToJsonString() {
+    //     assertEquals("[{\"name\":\"Borrower1\",\"maxBooks\":1},{\"name\":\"Borrower2\",\"maxBooks\":2}]", borrowersToJsonString(brs1))
+    // }
 
-    fun testBooksToJsonString() {
-        assertEquals("[{\"title\":\"Title1\",\"author\":\"Author1\",\"borrower\":{\"name\":\"Borrower1\",\"maxBooks\":1}},{\"title\":\"Title2\",\"author\":\"Author2\",\"borrower\":null}]", booksToJsonString(bks1))
-    }
+    // fun testBooksToJsonString() {
+    //     assertEquals("[{\"title\":\"Title1\",\"author\":\"Author1\",\"borrower\":{\"name\":\"Borrower1\",\"maxBooks\":1}},{\"title\":\"Title2\",\"author\":\"Author2\",\"borrower\":null}]", booksToJsonString(bks1))
+    // }
 
 }

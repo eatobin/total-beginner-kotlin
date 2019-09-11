@@ -1,7 +1,7 @@
 package total_beginner
 
-import kotlinx.serialization.json.JSON
-import kotlinx.serialization.list
+// import kotlinx.serialization.json.JSON
+// import kotlinx.serialization.list
 import total_beginner.Book.Companion.bookToString
 import total_beginner.Book.Companion.getBorrower
 import total_beginner.Book.Companion.getTitle
@@ -23,7 +23,7 @@ object Library {
             bks.filter { it != bk }
 
     fun <A> findItem(tgt: String, coll: List<A>, f: (A) -> String): A? {
-        val result: List<A> = coll.filter { it -> f(it) == tgt }
+        val result: List<A> = coll.filter { f(it) == tgt }
         return result.firstOrNull()
     }
 
@@ -75,38 +75,38 @@ object Library {
                 "\n" +
                 libraryToString(bks, brs) + "\n" +
                 "\n" +
-                bks.joinToString("\n") { it -> bookToString(it) } + "\n" +
+                bks.joinToString("\n") { bookToString(it) } + "\n" +
                 "\n" +
-                brs.joinToString("\n") { it -> borrowerToString(it) } + "\n" +
+                brs.joinToString("\n") { borrowerToString(it) } + "\n" +
                 "\n" +
                 "--- End of Status Report ---" +
                 "\n"
     }
 
-    fun jsonStringToBorrowers(jsonString: String): List<Borrower> {
-        return try {
-            JSON.parse(Borrower.serializer().list, jsonString)
-        } catch (e: Exception) {
-            e.printStackTrace()
-            emptyList()
-        }
-    }
+    // fun jsonStringToBorrowers(jsonString: String): List<Borrower> {
+    //     return try {
+    //         JSON.parse(Borrower.serializer().list, jsonString)
+    //     } catch (e: Exception) {
+    //         e.printStackTrace()
+    //         emptyList()
+    //     }
+    // }
 
-    fun jsonStringToBooks(jsonString: String): List<Book> {
-        return try {
-            JSON.parse(Book.serializer().list, jsonString)
-        } catch (e: Exception) {
-            e.printStackTrace()
-            emptyList()
-        }
-    }
+    // fun jsonStringToBooks(jsonString: String): List<Book> {
+    //     return try {
+    //         JSON.parse(Book.serializer().list, jsonString)
+    //     } catch (e: Exception) {
+    //         e.printStackTrace()
+    //         emptyList()
+    //     }
+    // }
 
-    fun borrowersToJsonString(brs: List<Borrower>): String {
-        return JSON.stringify(Borrower.serializer().list, brs)
-    }
+    // fun borrowersToJsonString(brs: List<Borrower>): String {
+    //     return JSON.stringify(Borrower.serializer().list, brs)
+    // }
 
-    fun booksToJsonString(bks: List<Book>): String {
-        return JSON.stringify(Book.serializer().list, bks)
-    }
+    // fun booksToJsonString(bks: List<Book>): String {
+    //     return JSON.stringify(Book.serializer().list, bks)
+    // }
 
 }
