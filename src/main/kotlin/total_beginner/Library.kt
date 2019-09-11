@@ -1,5 +1,6 @@
 package total_beginner
 
+import com.beust.klaxon.Klaxon
 import total_beginner.Book.Companion.bookToString
 import total_beginner.Book.Companion.getBorrower
 import total_beginner.Book.Companion.getTitle
@@ -81,23 +82,23 @@ object Library {
                 "\n"
     }
 
-    // fun jsonStringToBorrowers(jsonString: String): List<Borrower> {
-    //     return try {
-    //         JSON.parse(Borrower.serializer().list, jsonString)
-    //     } catch (e: Exception) {
-    //         e.printStackTrace()
-    //         emptyList()
-    //     }
-    // }
+    fun jsonStringToBorrowers(jsonString: String): List<Borrower>? {
+        return try {
+            Klaxon().parseArray<Borrower>(jsonString)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            emptyList()
+        }
+    }
 
-    // fun jsonStringToBooks(jsonString: String): List<Book> {
-    //     return try {
-    //         JSON.parse(Book.serializer().list, jsonString)
-    //     } catch (e: Exception) {
-    //         e.printStackTrace()
-    //         emptyList()
-    //     }
-    // }
+    fun jsonStringToBooks(jsonString: String): List<Book>? {
+        return try {
+            Klaxon().parseArray<Book>(jsonString)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            emptyList()
+        }
+    }
 
     // fun borrowersToJsonString(brs: List<Borrower>): String {
     //     return JSON.stringify(Borrower.serializer().list, brs)
