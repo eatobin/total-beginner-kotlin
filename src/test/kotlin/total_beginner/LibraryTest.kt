@@ -8,6 +8,8 @@ import io.kotlintest.matchers.types.shouldBeNull
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import total_beginner.Library.addItem
+import total_beginner.Library.booksToJsonString
+import total_beginner.Library.borrowersToJsonString
 import total_beginner.Library.checkIn
 import total_beginner.Library.checkOut
 import total_beginner.Library.findItem
@@ -100,11 +102,10 @@ class LibraryTest : StringSpec({
         jsonStringToBooks(jsonStringBooksShort).shouldBe(bks1)
     }
 
-    // fun testJsonStringToObjects() {
-    //     assertEquals(brs1, jsonStringToBorrowers(jsonStringBorrowers))
-    //     assertEquals(bks1, jsonStringToBooks(jsonStringBooks))
-    //     assertEquals(bks1, jsonStringToBooks(jsonStringBooksShort))
-    // }
+    "a objects should convert to a JSON string" {
+        borrowersToJsonString(brs1).shouldBe("[{\"maxBooks\" : 1, \"name\" : \"Borrower1\"}, {\"maxBooks\" : 2, \"name\" : \"Borrower2\"}]")
+        booksToJsonString(bks1).shouldBe("[{\"author\" : \"Author1\", \"borrower\" : {\"maxBooks\" : 1, \"name\" : \"Borrower1\"}, \"title\" : \"Title1\"}, {\"author\" : \"Author2\", \"title\" : \"Title2\"}]")
+    }
 
     // fun testBorrowersToJsonString() {
     //     assertEquals("[{\"name\":\"Borrower1\",\"maxBooks\":1},{\"name\":\"Borrower2\",\"maxBooks\":2}]", borrowersToJsonString(brs1))

@@ -100,12 +100,12 @@ object Library {
         }
     }
 
-    // fun borrowersToJsonString(brs: List<Borrower>): String {
-    //     return JSON.stringify(Borrower.serializer().list, brs)
-    // }
+    fun borrowersToJsonString(brs: List<Borrower>): String {
+        return Klaxon().toJsonString(brs)
+    }
 
-    // fun booksToJsonString(bks: List<Book>): String {
-    //     return JSON.stringify(Book.serializer().list, bks)
-    // }
+    fun booksToJsonString(bks: List<Book>): String {
+        return Klaxon().toJsonString(bks)
+    }
 
 }
