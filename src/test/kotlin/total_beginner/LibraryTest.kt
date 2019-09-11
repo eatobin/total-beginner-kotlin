@@ -8,10 +8,12 @@ import io.kotlintest.matchers.types.shouldBeNull
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import total_beginner.Library.addItem
+import total_beginner.Library.checkIn
 import total_beginner.Library.checkOut
 import total_beginner.Library.findItem
 import total_beginner.Library.getBooksForBorrower
 import total_beginner.Library.removeBook
+import total_beginner.Library.statusToString
 
 
 private val br1 = Borrower("Borrower1", 1)
@@ -37,7 +39,7 @@ private val bks5 = listOf(bk2, Book(title = "Title1", author = "Author1", borrow
 //    private val jsonStringBooks = "[{\"title\":\"Title1\",\"author\":\"Author1\",\"borrower\":{\"name\":\"Borrower1\",\"maxBooks\":1}},{\"title\":\"Title2\",\"author\":\"Author2\",\"borrower\":null}]"
 //    private val jsonStringBooksShort = "[{\"title\":\"Title1\",\"author\":\"Author1\",\"borrower\":{\"name\":\"Borrower1\",\"maxBooks\":1}},{\"title\":\"Title2\",\"author\":\"Author2\"}]"
 
-private val ss = "\n--- Status Report of Test Library ---\n\nTest Library: 3 books; 3 borrowers.\n\nTitle1 by Author1; Checked out to Borrower1\nTitle2 by Author2; Available\nTitle3 by Author3; Checked out to Borrower3\n\nBorrower1 (1 books)\nBorrower2 (2 books)\nBorrower3 (3 books)\n\n--- End of Status Report ---\n"
+private const val ss = "\n--- Status Report of Test Library ---\n\nTest Library: 3 books; 3 borrowers.\n\nTitle1 by Author1; Checked out to Borrower1\nTitle2 by Author2; Available\nTitle3 by Author3; Checked out to Borrower3\n\nBorrower1 (1 books)\nBorrower2 (2 books)\nBorrower3 (3 books)\n\n--- End of Status Report ---\n"
 
 class LibraryTest : StringSpec({
 
@@ -80,16 +82,15 @@ class LibraryTest : StringSpec({
         checkOut("Borrower2", "Title2", brs2, bks3).shouldBe(bks4)
     }
 
-//
-//    fun testCheckIn() {
-//        assertEquals(bks5, checkIn("Title1", bks1))
-//        assertEquals(bks1, checkIn("Title2", bks1))
-//        assertEquals(bks1, checkIn("NoTitle", bks1))
-//    }
-//
-//    fun testStatusToString() {
-//        assertEquals(ss, statusToString(bks2, brs2))
-//    }
+    "a Book should check in" {
+        checkIn("Title1", bks1).shouldBe(bks5)
+        checkIn("Title2", bks1).shouldBe(bks1)
+        checkIn("NoTitle", bks1).shouldBe(bks1)
+    }
+
+    "a Library should have a status" {
+        statusToString(bks2, brs2).shouldBe(ss)
+    }
 
     // fun testJsonStringToObjects() {
     //     assertEquals(brs1, jsonStringToBorrowers(jsonStringBorrowers))
