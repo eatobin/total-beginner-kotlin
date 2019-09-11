@@ -8,7 +8,9 @@ import io.kotlintest.matchers.types.shouldBeNull
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import total_beginner.Library.addItem
+import total_beginner.Library.checkOut
 import total_beginner.Library.findItem
+import total_beginner.Library.getBooksForBorrower
 import total_beginner.Library.removeBook
 
 
@@ -56,31 +58,28 @@ class LibraryTest : StringSpec({
 
     "findBook should find a Book" {
         findItem("Title1", bks2) { Book.getTitle(it) }.shouldBe(bk1)
-        (findItem("Title11", bks2) { Book.getTitle(it) }.shouldBeNull())
+        findItem("Title11", bks2) { Book.getTitle(it) }.shouldBeNull()
     }
-//    fun testFindBook() {
-//        assertEquals(bk1, findItem("Title1", bks2) { Book.getTitle(it) })
-//        assertNull(findItem("Title11", bks2) { Book.getTitle(it) })
-//    }
-//
-//    fun testFindBorrower() {
-//        assertEquals(br1, findItem("Borrower1", brs2) { Borrower.getName(it) })
-//        assertNull(findItem("Borrower11", brs2) { Borrower.getName(it) })
-//    }
-//
-//    fun testGetBooksForBorrower() {
-//        assertEquals(listOf<Book>(), getBooksForBorrower(br2, bks1))
-//        assertEquals(listOf(bk1), getBooksForBorrower(br1, bks1))
-//        assertEquals(listOf(bk3, bk4), getBooksForBorrower(br3, bks3))
-//    }
-//
-//    fun testCheckOut() {
-//        assertEquals(bks1, checkOut("Borrower2", "Title1", brs1, bks1))
-//        assertEquals(bks1, checkOut("Borrower2", "NoTitle", brs1, bks1))
-//        assertEquals(bks1, checkOut("NoName", "Title1", brs1, bks1))
-//        assertEquals(bks1, checkOut("Borrower1", "Title2", brs1, bks1))
-//        assertEquals(bks4, checkOut("Borrower2", "Title2", brs2, bks3))
-//    }
+
+    "findBorrower should find a Borrower" {
+        findItem("Borrower1", brs2) { Borrower.getName(it) }.shouldBe(br1)
+        findItem("Borrower11", brs2) { Borrower.getName(it) }.shouldBeNull()
+    }
+
+    "getBooksForBorrower should find the Books for a Borrower" {
+        getBooksForBorrower(br2, bks1).shouldBe(listOf<Book>())
+        getBooksForBorrower(br1, bks1).shouldBe(listOf<Book>(bk1))
+        getBooksForBorrower(br3, bks3).shouldBe(listOf<Book>(bk3, bk4))
+    }
+
+    "a Book should check out" {
+        checkOut("Borrower2", "Title1", brs1, bks1).shouldBe(bks1)
+        checkOut("Borrower2", "NoTitle", brs1, bks1).shouldBe(bks1)
+        checkOut("NoName", "Title1", brs1, bks1).shouldBe(bks1)
+        checkOut("Borrower1", "Title2", brs1, bks1).shouldBe(bks1)
+        checkOut("Borrower2", "Title2", brs2, bks3).shouldBe(bks4)
+    }
+
 //
 //    fun testCheckIn() {
 //        assertEquals(bks5, checkIn("Title1", bks1))
