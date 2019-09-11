@@ -13,6 +13,7 @@ private val bk1 = Book("Title1", "Author1", br1)
 private val bk2 = Book("Title2", "Author2")
 
 class BookTest : StringSpec({
+
     "getTitle should return the Book title" {
         getTitle(bk1).shouldBe("Title1")
     }

@@ -1,7 +1,5 @@
 package total_beginner
 
-// import kotlinx.serialization.json.JSON
-// import kotlinx.serialization.list
 import total_beginner.Book.Companion.bookToString
 import total_beginner.Book.Companion.getBorrower
 import total_beginner.Book.Companion.getTitle
