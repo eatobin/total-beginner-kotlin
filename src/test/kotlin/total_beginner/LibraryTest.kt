@@ -69,9 +69,9 @@ class LibraryTest : StringSpec({
     }
 
     "getBooksForBorrower should find the Books for a Borrower" {
-        getBooksForBorrower(br2, bks1).shouldBe(listOf<Book>())
-        getBooksForBorrower(br1, bks1).shouldBe(listOf<Book>(bk1))
-        getBooksForBorrower(br3, bks3).shouldBe(listOf<Book>(bk3, bk4))
+        getBooksForBorrower(br2, bks1).shouldBe(listOf())
+        getBooksForBorrower(br1, bks1).shouldBe(listOf(bk1))
+        getBooksForBorrower(br3, bks3).shouldBe(listOf(bk3, bk4))
     }
 
     "a Book should check out" {
