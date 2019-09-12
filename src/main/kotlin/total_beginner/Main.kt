@@ -9,7 +9,6 @@ import total_beginner.Library.jsonStringToBorrowers
 import total_beginner.Library.statusToString
 import java.io.BufferedReader
 import java.io.File
-import kotlin.system.exitProcess
 
 object Main {
 
@@ -106,14 +105,14 @@ object Main {
         println("Last... delete the file \"borrowers-after.json\"")
         File(jsonBorrowersFileAfter).delete()
 
-        println("Then try to make a library using the deleted \"borrowers-after.json\" and \"borrowers-after.json\":")
+        println("Then try to make a library using the deleted \"borrowers-after.json\" and \"books-before.json\":")
         tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileAfter)
-        tvBooks = newBooksFromJsonString(jsonBorrowersFileAfter)
+        tvBooks = newBooksFromJsonString(jsonBooksFile)
         println(statusToString(tvBooks, tvBorrowers))
 
-        println("And if we read in a file with mal-formed json content... like \"bad-borrowers.json\" and \"borrowers-after.json\":")
+        println("And if we read in a file with mal-formed json content... like \"bad-borrowers.json\":")
         tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileBad)
-        tvBooks = newBooksFromJsonString(jsonBorrowersFileAfter)
+        tvBooks = newBooksFromJsonString(jsonBooksFile)
         println(statusToString(tvBooks, tvBorrowers))
 
         println("Or how about reading in an empty file... \"empty.json\" (for borrowers and books):")
@@ -131,8 +130,8 @@ object Main {
             val bufferedReader: BufferedReader = File(fp).bufferedReader()
             bufferedReader.use { it.readText() }
         } catch (e: Exception) {
-            println("The requested file does not exist..")
-            exitProcess(1)
+            println("The requested file $fp does not exist..")
+            null
         }
     }
 

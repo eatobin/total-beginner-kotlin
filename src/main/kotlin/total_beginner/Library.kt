@@ -83,13 +83,21 @@ object Library {
     }
 
     fun jsonStringToBorrowers(jsonString: String): List<Borrower> {
-        val mbrs: List<Borrower>? = Klaxon().parseArray(jsonString)
-        return mbrs ?: emptyList()
+        return try {
+            val mbrs: List<Borrower>? = Klaxon().parseArray(jsonString)
+            return mbrs ?: emptyList()
+        } catch (e: Exception) {
+            emptyList()
+        }
     }
 
     fun jsonStringToBooks(jsonString: String): List<Book> {
-        val mbks: List<Book>? = Klaxon().parseArray(jsonString)
-        return mbks ?: emptyList()
+        return try {
+            val mbks: List<Book>? = Klaxon().parseArray(jsonString)
+            return mbks ?: emptyList()
+        } catch (e: Exception) {
+            emptyList()
+        }
     }
 
     fun borrowersToJsonString(brs: List<Borrower>): String {
