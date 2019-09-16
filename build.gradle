@@ -19,8 +19,6 @@ apply plugin: 'kotlin'
 repositories {
     mavenCentral()
     jcenter()
-    // artifacts are published to this repository
-    maven { url "https://kotlin.bintray.com/kotlinx" }
 }
 
 dependencies {
