@@ -58,5 +58,5 @@ tasks {
 
 application {
     // Define the main class for the application
-    mainClassName = "total_beginner.AppKt"
+    mainClassName = "total_beginner.App"
 }
