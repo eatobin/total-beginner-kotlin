@@ -58,5 +58,5 @@ tasks {
 
 application {
     // Define the main class for the application
-    mainClassName = "TotalBeginnerKotlin.AppKt"
+    mainClassName = "total_beginner.AppKt"
 }
