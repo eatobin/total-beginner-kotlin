@@ -82,7 +82,7 @@ object Library {
                 "\n"
     }
 
-    fun jsonStringToBorrowers(jsonString: String): Borrowers {
+    fun jsonStringToBorrowers(jsonString: jsonString): Borrowers {
         return try {
             val mbrs: Borrowers? = Klaxon().parseArray(jsonString)
             return mbrs ?: emptyList()
@@ -91,7 +91,7 @@ object Library {
         }
     }
 
-    fun jsonStringToBooks(jsonString: String): Books {
+    fun jsonStringToBooks(jsonString: jsonString): Books {
         return try {
             val mbks: Books? = Klaxon().parseArray(jsonString)
             return mbks ?: emptyList()
@@ -100,11 +100,11 @@ object Library {
         }
     }
 
-    fun borrowersToJsonString(brs: Borrowers): String {
+    fun borrowersToJsonString(brs: Borrowers): jsonString {
         return Klaxon().toJsonString(brs)
     }
 
-    fun booksToJsonString(bks: Books): String {
+    fun booksToJsonString(bks: Books): jsonString {
         return Klaxon().toJsonString(bks)
     }
 
