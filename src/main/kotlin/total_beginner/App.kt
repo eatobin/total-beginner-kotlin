@@ -125,7 +125,7 @@ object App {
 
     }
 
-    private fun readFileIntoJsonString(fp: String): String? {
+    private fun readFileIntoJsonString(fp: String): jsonString? {
         return try {
             val bufferedReader: BufferedReader = File(fp).bufferedReader()
             bufferedReader.use { it.readText() }
@@ -135,18 +135,18 @@ object App {
         }
     }
 
-    private fun newBooksFromJsonString(bksfp: String): List<Book> {
+    private fun newBooksFromJsonString(bksfp: String): Books? {
         val mJsonBksStr: String? = readFileIntoJsonString(bksfp)
         return if (mJsonBksStr != null) {
             jsonStringToBooks(mJsonBksStr)
-        } else emptyList()
+        } else null
     }
 
-    private fun newBorrowersFromJsonString(brsfp: String): List<Borrower> {
+    private fun newBorrowersFromJsonString(brsfp: String): Borrowers? {
         val mJsonBrsStr: String? = readFileIntoJsonString(brsfp)
         return if (mJsonBrsStr != null) {
             jsonStringToBorrowers(mJsonBrsStr)
-        } else emptyList()
+        } else null
     }
 
     private fun writeJsonStringToFile(js: String) {
