@@ -2,15 +2,15 @@ package total_beginner
 
 import total_beginner.Borrower.Companion.getName
 
-data class Book(val title: String, val author: String, val borrower: Borrower? = null) {
+data class Book(val title: Title, val author: Author, val borrower: Borrower? = null) {
 
     companion object {
 
-        fun getTitle(bk: Book): String = bk.title
+        fun getTitle(bk: Book): Title = bk.title
 
-        fun getAuthor(bk: Book): String = bk.author
+        fun getAuthor(bk: Book): Author = bk.author
 
-        fun setAuthor(a: String, bk: Book): Book = bk.copy(author = a)
+        fun setAuthor(a: Author, bk: Book): Book = bk.copy(author = a)
 
         fun getBorrower(bk: Book): Borrower? = bk.borrower
 

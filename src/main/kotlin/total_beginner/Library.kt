@@ -18,7 +18,7 @@ object Library {
             xs.plusElement(x)
     }
 
-    fun removeBook(bk: Book, bks: List<Book>): List<Book> =
+    fun removeBook(bk: Book, bks: Books): Books =
             bks.filter { it != bk }
 
     fun <A> findItem(tgt: String, coll: List<A>, f: (A) -> String): A? {
@@ -26,13 +26,13 @@ object Library {
         return result.firstOrNull()
     }
 
-    fun getBooksForBorrower(br: Borrower, bks: List<Book>): List<Book> =
+    fun getBooksForBorrower(br: Borrower, bks: Books): Books =
             bks.filter { getBorrower(it) == br }
 
-    private fun numBooksOut(br: Borrower, bks: List<Book>): Int =
+    private fun numBooksOut(br: Borrower, bks: Books): Int =
             getBooksForBorrower(br, bks).count()
 
-    private fun notMaxedOut(br: Borrower, bks: List<Book>): Boolean =
+    private fun notMaxedOut(br: Borrower, bks: Books): Boolean =
             numBooksOut(br, bks) < getMaxBooks(br)
 
     private fun bookNotOut(bk: Book): Boolean =
@@ -41,7 +41,7 @@ object Library {
     private fun bookOut(bk: Book): Boolean =
             getBorrower(bk) != null
 
-    fun checkOut(n: String, t: String, brs: List<Borrower>, bks: List<Book>): List<Book> {
+    fun checkOut(n: Name, t: Title, brs: Borrowers, bks: Books): Books {
         val mbk: Book? = findItem(t, bks) { getTitle(it) }
         val mbr: Borrower? = findItem(n, brs) { getName(it) }
         return if (mbk != null && mbr != null && notMaxedOut(mbr, bks) && bookNotOut(mbk)) {
@@ -51,7 +51,7 @@ object Library {
         } else bks
     }
 
-    fun checkIn(t: String, bks: List<Book>): List<Book> {
+    fun checkIn(t: Title, bks: Books): Books {
         val mbk: Book? = findItem(t, bks) { getTitle(it) }
         return if (mbk != null && bookOut(mbk)) {
             val newBook = setBorrower(null, mbk)
@@ -60,7 +60,7 @@ object Library {
         } else bks
     }
 
-    private fun libraryToString(bks: List<Book>, brs: List<Borrower>): String {
+    private fun libraryToString(bks: Books, brs: Borrowers): String {
         return "Test Library: " +
                 bks.count() +
                 " books; " +
@@ -68,7 +68,7 @@ object Library {
                 " borrowers."
     }
 
-    fun statusToString(bks: List<Book>, brs: List<Borrower>): String {
+    fun statusToString(bks: Books, brs: Borrowers): String {
         return "\n" +
                 "--- Status Report of Test Library ---\n" +
                 "\n" +
@@ -82,29 +82,29 @@ object Library {
                 "\n"
     }
 
-    fun jsonStringToBorrowers(jsonString: String): List<Borrower> {
+    fun jsonStringToBorrowers(jsonString: String): Borrowers {
         return try {
-            val mbrs: List<Borrower>? = Klaxon().parseArray(jsonString)
+            val mbrs: Borrowers? = Klaxon().parseArray(jsonString)
             return mbrs ?: emptyList()
         } catch (e: Exception) {
             emptyList()
         }
     }
 
-    fun jsonStringToBooks(jsonString: String): List<Book> {
+    fun jsonStringToBooks(jsonString: String): Books {
         return try {
-            val mbks: List<Book>? = Klaxon().parseArray(jsonString)
+            val mbks: Books? = Klaxon().parseArray(jsonString)
             return mbks ?: emptyList()
         } catch (e: Exception) {
             emptyList()
         }
     }
 
-    fun borrowersToJsonString(brs: List<Borrower>): String {
+    fun borrowersToJsonString(brs: Borrowers): String {
         return Klaxon().toJsonString(brs)
     }
 
-    fun booksToJsonString(bks: List<Book>): String {
+    fun booksToJsonString(bks: Books): String {
         return Klaxon().toJsonString(bks)
     }
 
