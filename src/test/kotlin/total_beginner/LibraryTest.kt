@@ -100,8 +100,7 @@ class LibraryTest : StringSpec({
 
     "a objects should convert to a JSON string" {
         borrowersToJsonString(brs1).shouldBe("""[{"maxBooks" : 1, "name" : "Borrower1"}, {"maxBooks" : 2, "name" : "Borrower2"}]""")
-//        borrowersToJsonString(brs1).shouldBe("[{\"maxBooks\" : 1, \"name\" : \"Borrower1\"}, {\"maxBooks\" : 2, \"name\" : \"Borrower2\"}]")
-        booksToJsonString(bks1).shouldBe("[{\"author\" : \"Author1\", \"borrower\" : {\"maxBooks\" : 1, \"name\" : \"Borrower1\"}, \"title\" : \"Title1\"}, {\"author\" : \"Author2\", \"title\" : \"Title2\"}]")
+        booksToJsonString(bks1).shouldBe("""[{"author" : "Author1", "borrower" : {"maxBooks" : 1, "name" : "Borrower1"}, "title" : "Title1"}, {"author" : "Author2", "title" : "Title2"}]""")
     }
 
 })
