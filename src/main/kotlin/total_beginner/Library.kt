@@ -85,8 +85,7 @@ object Library {
     fun jsonStringToBorrowers(jsonString: jsonString?): Borrowers? {
         if (jsonString != null) {
             return try {
-                val mbrs: Borrowers? = Klaxon().parseArray(jsonString)
-                return mbrs ?: emptyList()
+                return Klaxon().parseArray(jsonString)
             } catch (e: Exception) {
                 null
             }
@@ -96,8 +95,7 @@ object Library {
     fun jsonStringToBooks(jsonString: jsonString?): Books? {
         if (jsonString != null) {
             return try {
-                val mbks: Books? = Klaxon().parseArray(jsonString)
-                return mbks ?: emptyList()
+                return Klaxon().parseArray(jsonString)
             } catch (e: Exception) {
                 null
             }
