@@ -17,8 +17,8 @@ object App {
         var tvBorrowers: Borrowers = emptyList()
         var tvBooks: Books = emptyList()
 
-//        val jsonBorrowersFileBefore = "borrowers-before.json"
-//        val jsonBooksFile = "books-before.json"
+        val jsonBorrowersFileBefore = "borrowers-before.json"
+        val jsonBooksFile = "books-before.json"
 //        val jsonBorrowersFileAfter = "borrowers-after.json"
 //        val jsonBorrowersFileBad = "bad-borrowers.json"
 //        val emptyFile = "empty.json"
@@ -80,8 +80,8 @@ object App {
         println(statusToString(tvBooks, tvBorrowers))
 
         println("Lets read in a new library from \"borrowers-before.json\" and \"books-before.json\":")
-        tvBorrowers = newBorrowersFromJsonString()
-        tvBooks = newBooksFromJsonString()
+        tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileBefore)
+        tvBooks = newBooksFromJsonString(jsonBooksFile)
         println(statusToString(tvBooks, tvBorrowers))
         println("Add... a new borrower:")
         tvBorrowers = addItem(Borrower("BorrowerNew", 300), tvBorrowers)
@@ -134,15 +134,15 @@ object App {
         }
     }
 
-    private fun newBooksFromJsonString(): Books {
-        val mJsonBksStr: String? = readFileIntoJsonString("books-before.json")
+    private fun newBooksFromJsonString(bksfp: String): Books {
+        val mJsonBksStr: String? = readFileIntoJsonString(bksfp)
         return if (mJsonBksStr != null) {
             jsonStringToBooks(mJsonBksStr)
         } else emptyList()
     }
 
-    private fun newBorrowersFromJsonString(): Borrowers {
-        val mJsonBrsStr: String? = readFileIntoJsonString("borrowers-before.json")
+    private fun newBorrowersFromJsonString(brsfp: String): Borrowers {
+        val mJsonBrsStr: String? = readFileIntoJsonString(brsfp)
         return if (mJsonBrsStr != null) {
             jsonStringToBorrowers(mJsonBrsStr)
         } else emptyList()
