@@ -84,10 +84,25 @@ object Library {
                 "\n"
     }
 
-    fun jsonStringToBorrowers(jsonString: jsonString): Borrowers {
-        val result = Klaxon().parseArray<Borrower>(jsonString)
-        return result ?: emptyList()
+//    fun jsonStringToBorrowers(jsonString: jsonString): Borrowers {
+//        val result = Klaxon().parseArray<Borrower>(jsonString)
+//        return result ?: emptyList()
+//
+//    }
 
+    fun jsonStringToBorrowers(jsonString: jsonString): Borrowers {
+        val klaxon = Klaxon()
+        JsonReader(StringReader(jsonString)).use { reader ->
+            val result = arrayListOf<Borrower>()
+            reader.beginArray {
+                while (reader.hasNext()) {
+                    val borrower = klaxon.parse<Borrower>(reader)
+                    if (borrower != null)
+                        result.add(borrower)
+                }
+            }
+            return result
+        }
     }
 
     fun jsonStringToBooks(jsonString: jsonString): Books {

@@ -1,6 +1,7 @@
 package total_beginner
 
 import total_beginner.Library.addItem
+import total_beginner.Library.borrowersToJsonString
 import total_beginner.Library.checkIn
 import total_beginner.Library.checkOut
 import total_beginner.Library.jsonStringToBooks
@@ -19,9 +20,9 @@ object App {
 
         val jsonBorrowersFileBefore = "borrowers-before.json"
         val jsonBooksFile = "books-before.json"
-//        val jsonBorrowersFileAfter = "borrowers-after.json"
-//        val jsonBorrowersFileBad = "bad-borrowers.json"
-//        val emptyFile = "empty.json"
+        val jsonBorrowersFileAfter = "borrowers-after.json"
+        val jsonBorrowersFileBad = "bad-borrowers.json"
+        val emptyFile = "empty.json"
 
         tvBorrowers = addItem(Borrower("Jim", 3), tvBorrowers)
         tvBorrowers = addItem(Borrower("Sue", 3), tvBorrowers)
@@ -86,31 +87,31 @@ object App {
         println("Add... a new borrower:")
         tvBorrowers = addItem(Borrower("BorrowerNew", 300), tvBorrowers)
         println(statusToString(tvBooks, tvBorrowers))
-//
-//        println("Save the revised borrowers to \"borrowers-after.json\"")
-//        val jsonBrsStr = borrowersToJsonString(tvBorrowers)
-//        writeJsonStringToFile(jsonBrsStr)
-//
-//        println("Clear the whole library again:")
-//        tvBorrowers = emptyList()
-//        tvBooks = emptyList()
-//        println(statusToString(tvBooks, tvBorrowers))
-//
-//        println("Then read in the revised library from \"borrowers-after.json\" and \"books-before.json\":")
-//        tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileAfter)
-//        tvBooks = newBooksFromJsonString(jsonBooksFile)
-//        println(statusToString(tvBooks, tvBorrowers))
-//
-//        println("Last... delete the file \"borrowers-after.json\"")
-//        File(jsonBorrowersFileAfter).delete()
-//
-//        println("Then try to make a library using the deleted \"borrowers-after.json\" and \"books-before.json\":")
-//        tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileAfter)
-//        tvBooks = newBooksFromJsonString(jsonBooksFile)
-//        println(statusToString(tvBooks, tvBorrowers))
-//
-//        println("And if we read in a file with mal-formed json content... like \"bad-borrowers.json\":")
-//        tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileBad)
+
+        println("Save the revised borrowers to \"borrowers-after.json\"")
+        val jsonBrsStr = borrowersToJsonString(tvBorrowers)
+        writeJsonStringToFile(jsonBrsStr)
+
+        println("Clear the whole library again:")
+        tvBorrowers = emptyList()
+        tvBooks = emptyList()
+        println(statusToString(tvBooks, tvBorrowers))
+
+        println("Then read in the revised library from \"borrowers-after.json\" and \"books-before.json\":")
+        tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileAfter)
+        tvBooks = newBooksFromJsonString(jsonBooksFile)
+        println(statusToString(tvBooks, tvBorrowers))
+
+        println("Last... delete the file \"borrowers-after.json\"")
+        File(jsonBorrowersFileAfter).delete()
+
+        println("Then try to make a library using the deleted \"borrowers-after.json\" and \"books-before.json\":")
+        tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileAfter)
+        tvBooks = newBooksFromJsonString(jsonBooksFile)
+        println(statusToString(tvBooks, tvBorrowers))
+
+        println("And if we read in a file with mal-formed json content... like \"bad-borrowers.json\":")
+        tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileBad)
 //        tvBooks = newBooksFromJsonString(jsonBooksFile)
 //        println(statusToString(tvBooks, tvBorrowers))
 //
@@ -135,7 +136,7 @@ object App {
     }
 
     private fun newBooksFromJsonString(bksfp: String): Books {
-        val mJsonBksStr: String? = readFileIntoJsonString(bksfp)
+        val mJsonBksStr: jsonString? = readFileIntoJsonString(bksfp)
         return if (mJsonBksStr != null) {
             jsonStringToBooks(mJsonBksStr)
         } else emptyList()
@@ -147,9 +148,9 @@ object App {
             jsonStringToBorrowers(mJsonBrsStr)
         } else emptyList()
     }
-//
-//    private fun writeJsonStringToFile(js: String) {
-//        File("borrowers-after.json").bufferedWriter().use { out -> out.write(js) }
-//    }
+
+    private fun writeJsonStringToFile(js: String) {
+        File("borrowers-after.json").bufferedWriter().use { out -> out.write(js) }
+    }
 
 }
