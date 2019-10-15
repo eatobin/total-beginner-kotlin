@@ -1,7 +1,7 @@
 package total_beginner
 
 //import com.beust.klaxon.JsonReader
-//import com.beust.klaxon.Klaxon
+import com.beust.klaxon.Klaxon
 import total_beginner.Book.Companion.bookToString
 import total_beginner.Book.Companion.getBorrower
 import total_beginner.Book.Companion.getTitle
@@ -9,6 +9,7 @@ import total_beginner.Book.Companion.setBorrower
 import total_beginner.Borrower.Companion.borrowerToString
 import total_beginner.Borrower.Companion.getMaxBooks
 import total_beginner.Borrower.Companion.getName
+
 //import java.io.StringReader
 
 object Library {
@@ -84,12 +85,12 @@ object Library {
                 "\n"
     }
 
-////    fun jsonStringToBorrowers(jsonString: jsonString): Borrowers {
-////        val result = Klaxon().parseArray<Borrower>(jsonString)
-////        return result ?: emptyList()
-////
-////    }
-//
+    fun jsonStringToBorrowers(jsonString: jsonString): Borrowers {
+        val result = Klaxon().parseArray<Borrower>(jsonString)
+        return result ?: emptyList()
+
+    }
+
 //    fun jsonStringToBorrowers(jsonString: jsonString): Borrowers {
 //        val klaxon = Klaxon()
 //        JsonReader(StringReader(jsonString)).use { reader ->
@@ -119,13 +120,13 @@ object Library {
 //            return result
 //        }
 //    }
-//
-//    fun borrowersToJsonString(brs: Borrowers): jsonString {
-//        return Klaxon().toJsonString(brs)
-//    }
-//
-//    fun booksToJsonString(bks: Books): jsonString {
-//        return Klaxon().toJsonString(bks)
-//    }
-//
+
+    fun borrowersToJsonString(brs: Borrowers): jsonString {
+        return Klaxon().toJsonString(brs)
+    }
+
+    fun booksToJsonString(bks: Books): jsonString {
+        return Klaxon().toJsonString(bks)
+    }
+
 }
