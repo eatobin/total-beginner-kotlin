@@ -9,7 +9,6 @@ import total_beginner.Book.Companion.setBorrower
 import total_beginner.Borrower.Companion.borrowerToString
 import total_beginner.Borrower.Companion.getMaxBooks
 import total_beginner.Borrower.Companion.getName
-
 import java.io.StringReader
 
 object Library {
@@ -84,12 +83,6 @@ object Library {
                 "--- End of Status Report ---" +
                 "\n"
     }
-
-//    fun jsonStringToBorrowers(jsonString: jsonString): Borrowers {
-//        val result = Klaxon().parseArray<Borrower>(jsonString)
-//        return result ?: emptyList()
-//
-//    }
 
     fun jsonStringToBorrowers(jsonString: jsonString): Borrowers {
         val klaxon = Klaxon()

@@ -1,5 +1,6 @@
 package total_beginner
 
+import io.kotlintest.matchers.string.shouldStartWith
 import io.kotlintest.matchers.types.shouldBeNull
 import io.kotlintest.shouldBe
 import io.kotlintest.shouldThrow
@@ -38,6 +39,7 @@ private val bks5 = listOf(bk2, Book(title = "Title1", author = "Author1", borrow
 private const val jsonStringBorrowers = """[{"name":"Borrower1","maxBooks":1},{"name":"Borrower2","maxBooks":2}]"""
 private const val jsonStringBorrowersBad = """[{"nameX":"Borrower1","maxBooks":1},{"name":"Borrower2","maxBooks":2}]"""
 private const val jsonStringBooks = """[{"title":"Title1","author":"Author1","borrower":{"name":"Borrower1","maxBooks":1}},{"title":"Title2","author":"Author2","borrower":null}]"""
+private const val jsonStringBooksBad = """[{"title":"Title1","authorX":"Author1","borrower":{"name":"Borrower1","maxBooks":1}},{"title":"Title2","author":"Author2","borrower":null}]"""
 private const val jsonStringBooksNoBorrowerOn2 = """[{"title":"Title1","author":"Author1","borrower":{"name":"Borrower1","maxBooks":1}},{"title":"Title2","author":"Author2"}]"""
 
 private const val ss = "\n--- Status Report of Test Library ---\n\nTest Library: 3 books; 3 borrowers.\n\nTitle1 by Author1; Checked out to Borrower1\nTitle2 by Author2; Available\nTitle3 by Author3; Checked out to Borrower3\n\nBorrower1 (1 books)\nBorrower2 (2 books)\nBorrower3 (3 books)\n\n--- End of Status Report ---\n"
@@ -97,10 +99,14 @@ class LibraryTest : StringSpec({
         jsonStringToBorrowers(jsonStringBorrowers).shouldBe(brs1)
         jsonStringToBooks(jsonStringBooks).shouldBe(bks1)
         jsonStringToBooks(jsonStringBooksNoBorrowerOn2).shouldBe(bks1)
-        val exception = shouldThrow<com.beust.klaxon.KlaxonException> {
+        val borrowerException = shouldThrow<com.beust.klaxon.KlaxonException> {
             jsonStringToBorrowers(jsonStringBorrowersBad)
         }
-        exception.message shouldBe ("Unable to instantiate Borrower with parameters [maxBooks: 1]")
+        borrowerException.message shouldStartWith ("Unable to instantiate Borrower with parameters")
+        val bookException = shouldThrow<com.beust.klaxon.KlaxonException> {
+            jsonStringToBooks(jsonStringBooksBad)
+        }
+        bookException.message shouldStartWith ("Unable to instantiate Book with parameters")
     }
 
     "objects should convert to a JSON string" {
