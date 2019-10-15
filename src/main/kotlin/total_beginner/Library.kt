@@ -1,5 +1,5 @@
 package total_beginner
-//
+
 //import com.beust.klaxon.JsonReader
 //import com.beust.klaxon.Klaxon
 //import total_beginner.Book.Companion.bookToString
@@ -10,16 +10,16 @@ package total_beginner
 //import total_beginner.Borrower.Companion.getMaxBooks
 //import total_beginner.Borrower.Companion.getName
 //import java.io.StringReader
-//
-//object Library {
-//
-//    fun <A> addItem(x: A, xs: List<A>): List<A> {
-//        return if (xs.contains(x))
-//            xs
-//        else
-//            xs.plusElement(x)
-//    }
-//
+
+object Library {
+
+    fun <A> addItem(x: A, xs: List<A>): List<A> {
+        return if (xs.contains(x))
+            xs
+        else
+            xs.plusElement(x)
+    }
+
 //    fun removeBook(bk: Book, bks: Books): Books =
 //            bks.filter { it != bk }
 //
@@ -128,4 +128,4 @@ package total_beginner
 //        return Klaxon().toJsonString(bks)
 //    }
 //
-//}
+}
