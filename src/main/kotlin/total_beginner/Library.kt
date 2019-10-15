@@ -106,20 +106,20 @@ object Library {
         }
     }
 
-//    fun jsonStringToBooks(jsonString: jsonString): Books {
-//        val klaxon = Klaxon()
-//        JsonReader(StringReader(jsonString)).use { reader ->
-//            val result = arrayListOf<Book>()
-//            reader.beginArray {
-//                while (reader.hasNext()) {
-//                    val book = klaxon.parse<Book>(reader)
-//                    if (book != null)
-//                        result.add(book)
-//                }
-//            }
-//            return result
-//        }
-//    }
+    fun jsonStringToBooks(jsonString: jsonString): Books {
+        val klaxon = Klaxon()
+        JsonReader(StringReader(jsonString)).use { reader ->
+            val result = arrayListOf<Book>()
+            reader.beginArray {
+                while (reader.hasNext()) {
+                    val book = klaxon.parse<Book>(reader)
+                    if (book != null)
+                        result.add(book)
+                }
+            }
+            return result
+        }
+    }
 
     fun borrowersToJsonString(brs: Borrowers): jsonString {
         return Klaxon().toJsonString(brs)

@@ -12,7 +12,7 @@ import total_beginner.Library.checkIn
 import total_beginner.Library.checkOut
 import total_beginner.Library.findItem
 import total_beginner.Library.getBooksForBorrower
-//import total_beginner.Library.jsonStringToBooks
+import total_beginner.Library.jsonStringToBooks
 import total_beginner.Library.jsonStringToBorrowers
 import total_beginner.Library.removeBook
 import total_beginner.Library.statusToString
@@ -95,8 +95,8 @@ class LibraryTest : StringSpec({
 
     "a JSON string should convert to objects" {
         jsonStringToBorrowers(jsonStringBorrowers).shouldBe(brs1)
-//        jsonStringToBooks(jsonStringBooks).shouldBe(bks1)
-//        jsonStringToBooks(jsonStringBooksNoBorrowerOn2).shouldBe(bks1)
+        jsonStringToBooks(jsonStringBooks).shouldBe(bks1)
+        jsonStringToBooks(jsonStringBooksNoBorrowerOn2).shouldBe(bks1)
         val exception = shouldThrow<com.beust.klaxon.KlaxonException> {
             jsonStringToBorrowers(jsonStringBorrowersBad)
         }
