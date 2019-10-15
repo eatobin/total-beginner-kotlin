@@ -59,12 +59,12 @@ class LibraryTest : StringSpec({
         removeBook(bk3, bks1).shouldBe(bks1)
     }
 
-    "findBook should find a Book" {
+    "findItem should find a Book" {
         findItem("Title1", bks2) { Book.getTitle(it) }.shouldBe(bk1)
         findItem("Title11", bks2) { Book.getTitle(it) }.shouldBeNull()
     }
 
-    "findBorrower should find a Borrower" {
+    "findItem should find a Borrower" {
         findItem("Borrower1", brs2) { Borrower.getName(it) }.shouldBe(br1)
         findItem("Borrower11", brs2) { Borrower.getName(it) }.shouldBeNull()
     }
@@ -103,7 +103,7 @@ class LibraryTest : StringSpec({
         exception.message shouldBe ("Unable to instantiate Borrower with parameters [maxBooks: 1]")
     }
 
-    "a objects should convert to a JSON string" {
+    "objects should convert to a JSON string" {
         borrowersToJsonString(brs1).shouldBe("""[{"maxBooks" : 1, "name" : "Borrower1"}, {"maxBooks" : 2, "name" : "Borrower2"}]""")
         booksToJsonString(bks1).shouldBe("""[{"author" : "Author1", "borrower" : {"maxBooks" : 1, "name" : "Borrower1"}, "title" : "Title1"}, {"author" : "Author2", "title" : "Title2"}]""")
     }
