@@ -41,7 +41,7 @@ private val bks5 = listOf(bk2, Book(title = "Title1", author = "Author1", borrow
 //private const val jsonStringBooks = """[{"title":"Title1","author":"Author1","borrower":{"name":"Borrower1","maxBooks":1}},{"title":"Title2","author":"Author2","borrower":null}]"""
 //private const val jsonStringBooksNoBorrowerOn2 = """[{"title":"Title1","author":"Author1","borrower":{"name":"Borrower1","maxBooks":1}},{"title":"Title2","author":"Author2"}]"""
 //
-//private const val ss = "\n--- Status Report of Test Library ---\n\nTest Library: 3 books; 3 borrowers.\n\nTitle1 by Author1; Checked out to Borrower1\nTitle2 by Author2; Available\nTitle3 by Author3; Checked out to Borrower3\n\nBorrower1 (1 books)\nBorrower2 (2 books)\nBorrower3 (3 books)\n\n--- End of Status Report ---\n"
+private const val ss = "\n--- Status Report of Test Library ---\n\nTest Library: 3 books; 3 borrowers.\n\nTitle1 by Author1; Checked out to Borrower1\nTitle2 by Author2; Available\nTitle3 by Author3; Checked out to Borrower3\n\nBorrower1 (1 books)\nBorrower2 (2 books)\nBorrower3 (3 books)\n\n--- End of Status Report ---\n"
 
 class LibraryTest : StringSpec({
 
@@ -70,30 +70,30 @@ class LibraryTest : StringSpec({
         findItem("Borrower11", brs2) { Borrower.getName(it) }.shouldBeNull()
     }
 
-//    "getBooksForBorrower should find the Books for a Borrower" {
-//        getBooksForBorrower(br2, bks1).shouldBe(listOf())
-//        getBooksForBorrower(br1, bks1).shouldBe(listOf(bk1))
-//        getBooksForBorrower(br3, bks3).shouldBe(listOf(bk3, bk4))
-//    }
-//
-//    "a Book should check out" {
-//        checkOut("Borrower2", "Title1", brs1, bks1).shouldBe(bks1)
-//        checkOut("Borrower2", "NoTitle", brs1, bks1).shouldBe(bks1)
-//        checkOut("NoName", "Title1", brs1, bks1).shouldBe(bks1)
-//        checkOut("Borrower1", "Title2", brs1, bks1).shouldBe(bks1)
-//        checkOut("Borrower2", "Title2", brs2, bks3).shouldBe(bks4)
-//    }
-//
-//    "a Book should check in" {
-//        checkIn("Title1", bks1).shouldBe(bks5)
-//        checkIn("Title2", bks1).shouldBe(bks1)
-//        checkIn("NoTitle", bks1).shouldBe(bks1)
-//    }
-//
-//    "a Library should have a status" {
-//        statusToString(bks2, brs2).shouldBe(ss)
-//    }
-//
+    "getBooksForBorrower should find the Books for a Borrower" {
+        getBooksForBorrower(br2, bks1).shouldBe(listOf())
+        getBooksForBorrower(br1, bks1).shouldBe(listOf(bk1))
+        getBooksForBorrower(br3, bks3).shouldBe(listOf(bk3, bk4))
+    }
+
+    "a Book should check out" {
+        checkOut("Borrower2", "Title1", brs1, bks1).shouldBe(bks1)
+        checkOut("Borrower2", "NoTitle", brs1, bks1).shouldBe(bks1)
+        checkOut("NoName", "Title1", brs1, bks1).shouldBe(bks1)
+        checkOut("Borrower1", "Title2", brs1, bks1).shouldBe(bks1)
+        checkOut("Borrower2", "Title2", brs2, bks3).shouldBe(bks4)
+    }
+
+    "a Book should check in" {
+        checkIn("Title1", bks1).shouldBe(bks5)
+        checkIn("Title2", bks1).shouldBe(bks1)
+        checkIn("NoTitle", bks1).shouldBe(bks1)
+    }
+
+    "a Library should have a status" {
+        statusToString(bks2, brs2).shouldBe(ss)
+    }
+
 //    "a JSON string should convert to objects" {
 //        jsonStringToBorrowers(jsonStringBorrowers).shouldBe(brs1)
 //        jsonStringToBooks(jsonStringBooks).shouldBe(bks1)
