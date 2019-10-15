@@ -1,6 +1,6 @@
 package total_beginner
 
-//import io.kotlintest.matchers.types.shouldBeNull
+import io.kotlintest.matchers.types.shouldBeNull
 import io.kotlintest.shouldBe
 //import io.kotlintest.shouldThrow
 import io.kotlintest.specs.StringSpec
@@ -8,14 +8,14 @@ import total_beginner.Library.addItem
 
 //import total_beginner.Library.booksToJsonString
 //import total_beginner.Library.borrowersToJsonString
-//import total_beginner.Library.checkIn
-//import total_beginner.Library.checkOut
-//import total_beginner.Library.findItem
-//import total_beginner.Library.getBooksForBorrower
+import total_beginner.Library.checkIn
+import total_beginner.Library.checkOut
+import total_beginner.Library.findItem
+import total_beginner.Library.getBooksForBorrower
 //import total_beginner.Library.jsonStringToBooks
 //import total_beginner.Library.jsonStringToBorrowers
-//import total_beginner.Library.removeBook
-//import total_beginner.Library.statusToString
+import total_beginner.Library.removeBook
+import total_beginner.Library.statusToString
 
 private val br1 = Borrower("Borrower1", 1)
 private val br2 = Borrower("Borrower2", 2)
@@ -55,21 +55,21 @@ class LibraryTest : StringSpec({
         addItem(bk2, bks1).shouldBe(bks1)
     }
 
-//    "removeBook should remove a Book" {
-//        removeBook(bk3, bks2).shouldBe(bks1)
-//        removeBook(bk3, bks1).shouldBe(bks1)
-//    }
-//
-//    "findBook should find a Book" {
-//        findItem("Title1", bks2) { Book.getTitle(it) }.shouldBe(bk1)
-//        findItem("Title11", bks2) { Book.getTitle(it) }.shouldBeNull()
-//    }
-//
-//    "findBorrower should find a Borrower" {
-//        findItem("Borrower1", brs2) { Borrower.getName(it) }.shouldBe(br1)
-//        findItem("Borrower11", brs2) { Borrower.getName(it) }.shouldBeNull()
-//    }
-//
+    "removeBook should remove a Book" {
+        removeBook(bk3, bks2).shouldBe(bks1)
+        removeBook(bk3, bks1).shouldBe(bks1)
+    }
+
+    "findBook should find a Book" {
+        findItem("Title1", bks2) { Book.getTitle(it) }.shouldBe(bk1)
+        findItem("Title11", bks2) { Book.getTitle(it) }.shouldBeNull()
+    }
+
+    "findBorrower should find a Borrower" {
+        findItem("Borrower1", brs2) { Borrower.getName(it) }.shouldBe(br1)
+        findItem("Borrower11", brs2) { Borrower.getName(it) }.shouldBeNull()
+    }
+
 //    "getBooksForBorrower should find the Books for a Borrower" {
 //        getBooksForBorrower(br2, bks1).shouldBe(listOf())
 //        getBooksForBorrower(br1, bks1).shouldBe(listOf(bk1))
