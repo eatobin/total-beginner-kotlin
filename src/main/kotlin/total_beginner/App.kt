@@ -131,7 +131,7 @@ object App {
             val bufferedReader: BufferedReader = File(fp).bufferedReader()
             bufferedReader.use { it.readText() }
         } catch (_: Exception) {
-            println("\n***The requested file $fp does not exist***\n")
+            println("\n***The requested file \"" + fp + "\" does not exist***\n")
             null
         }
     }
