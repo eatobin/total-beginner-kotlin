@@ -150,7 +150,7 @@ object App {
         } else emptyList()
     }
 
-    private fun writeJsonStringToFile(js: String) {
+    fun writeJsonStringToFile(js: String) {
         File("borrowers-after.json").bufferedWriter().use { out -> out.write(js) }
     }
 
