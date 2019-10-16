@@ -33,7 +33,7 @@ class AppTest : StringSpec({
 
     "newBooksFromJsonString should make List<Book> from a file" {
         newBooksFromJsonString("books-before.json").shouldBe(bks)
-//        readFileIntoJsonString("not-a-file.json").shouldBeNull()
+        newBooksFromJsonString("not-a-file.json").shouldBe(emptyList())
 
     }
 })
