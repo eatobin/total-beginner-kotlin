@@ -126,7 +126,7 @@ object App {
 
     }
 
-    private fun readFileIntoJsonString(fp: String): jsonString? {
+    fun readFileIntoJsonString(fp: String): jsonString? {
         return try {
             val bufferedReader: BufferedReader = File(fp).bufferedReader()
             bufferedReader.use { it.readText() }
