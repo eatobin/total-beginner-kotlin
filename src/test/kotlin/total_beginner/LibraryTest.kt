@@ -97,18 +97,9 @@ class LibraryTest : StringSpec({
         jsonStringToBorrowers(jsonStringBorrowers).shouldBe(brs1)
         jsonStringToBooks(jsonStringBooks).shouldBe(bks1)
         jsonStringToBooks(jsonStringBooksNoBorrowerOn2).shouldBe(bks1)
-//        val borrowerException = shouldThrow<com.beust.klaxon.KlaxonException> {
-//            jsonStringToBorrowers(jsonStringBorrowersBad)
-//        }
-//        borrowerException.message shouldStartWith ("Unable to instantiate Borrower with parameters")
-//        val bookException = shouldThrow<com.beust.klaxon.KlaxonException> {
-//            jsonStringToBooks(jsonStringBooksBad)
-//        }
-//        bookException.message shouldStartWith ("Unable to instantiate Book with parameters")
-//        val bookExceptionFile = shouldThrow<com.beust.klaxon.KlaxonException> {
-//            jsonStringToBooks(jsonStringBooksBadFile)
-//        }
-//        bookExceptionFile.message shouldStartWith ("Unexpected character at position 9: ';'")
+        jsonStringToBorrowers(jsonStringBorrowersBad).shouldBe(emptyList())
+        jsonStringToBooks(jsonStringBooksBad).shouldBe(emptyList())
+        jsonStringToBooks(jsonStringBooksBadFile).shouldBe(emptyList())
     }
 
     "objects should convert to a JSON string" {
