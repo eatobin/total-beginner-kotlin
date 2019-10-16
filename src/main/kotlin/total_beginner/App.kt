@@ -2,11 +2,11 @@ package total_beginner
 
 
 import total_beginner.Library.addItem
-//import total_beginner.Library.borrowersToJsonString
+import total_beginner.Library.borrowersToJsonString
 import total_beginner.Library.checkIn
 import total_beginner.Library.checkOut
-//import total_beginner.Library.jsonStringToBooks
-//import total_beginner.Library.jsonStringToBorrowers
+import total_beginner.Library.jsonStringToBooks
+import total_beginner.Library.jsonStringToBorrowers
 import total_beginner.Library.statusToString
 import java.io.BufferedReader
 import java.io.File
@@ -76,41 +76,41 @@ object App {
         println("No change to Test Library:")
         println(statusToString(tvBooks, tvBorrowers))
 
-//        println("Okay... let's finish with some persistence. First clear the whole library:")
-//        tvBorrowers = emptyList()
-//        tvBooks = emptyList()
-//        println(statusToString(tvBooks, tvBorrowers))
-//
-//        println("Lets read in a new library from \"borrowers-before.json\" and \"books-before.json\":")
-//        tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileBefore)
-//        tvBooks = newBooksFromJsonString(jsonBooksFile)
-//        println(statusToString(tvBooks, tvBorrowers))
-//        println("Add... a new borrower:")
-//        tvBorrowers = addItem(Borrower("BorrowerNew", 300), tvBorrowers)
-//        println(statusToString(tvBooks, tvBorrowers))
-//
-//        println("Save the revised borrowers to \"borrowers-after.json\"")
-//        val jsonBrsStr = borrowersToJsonString(tvBorrowers)
-//        writeJsonStringToFile(jsonBrsStr)
-//
-//        println("Clear the whole library again:")
-//        tvBorrowers = emptyList()
-//        tvBooks = emptyList()
-//        println(statusToString(tvBooks, tvBorrowers))
-//
-//        println("Then read in the revised library from \"borrowers-after.json\" and \"books-before.json\":")
-//        tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileAfter)
-//        tvBooks = newBooksFromJsonString(jsonBooksFile)
-//        println(statusToString(tvBooks, tvBorrowers))
-//
-//        println("Last... delete the file \"borrowers-after.json\"")
-//        File(jsonBorrowersFileAfter).delete()
-//
-//        println("Then try to make a library using the deleted \"borrowers-after.json\" and \"books-before.json\":")
-//        tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileAfter)
-//        tvBooks = newBooksFromJsonString(jsonBooksFile)
-//        println(statusToString(tvBooks, tvBorrowers))
-//
+        println("Okay... let's finish with some persistence. First clear the whole library:")
+        tvBorrowers = emptyList()
+        tvBooks = emptyList()
+        println(statusToString(tvBooks, tvBorrowers))
+
+        println("Lets read in a new library from \"borrowers-before.json\" and \"books-before.json\":")
+        tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileBefore)
+        tvBooks = newBooksFromJsonString(jsonBooksFile)
+        println(statusToString(tvBooks, tvBorrowers))
+        println("Add... a new borrower:")
+        tvBorrowers = addItem(Borrower("BorrowerNew", 300), tvBorrowers)
+        println(statusToString(tvBooks, tvBorrowers))
+
+        println("Save the revised borrowers to \"borrowers-after.json\"")
+        val jsonBrsStr = borrowersToJsonString(tvBorrowers)
+        writeJsonStringToFile(jsonBrsStr)
+
+        println("Clear the whole library again:")
+        tvBorrowers = emptyList()
+        tvBooks = emptyList()
+        println(statusToString(tvBooks, tvBorrowers))
+
+        println("Then read in the revised library from \"borrowers-after.json\" and \"books-before.json\":")
+        tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileAfter)
+        tvBooks = newBooksFromJsonString(jsonBooksFile)
+        println(statusToString(tvBooks, tvBorrowers))
+
+        println("Last... delete the file \"borrowers-after.json\"")
+        File(jsonBorrowersFileAfter).delete()
+
+        println("Then try to make a library using the deleted \"borrowers-after.json\" and \"books-before.json\":")
+        tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileAfter)
+        tvBooks = newBooksFromJsonString(jsonBooksFile)
+        println(statusToString(tvBooks, tvBorrowers))
+
 //        println("And if we read in a file with mal-formed json content... like \"bad-borrowers.json\":")
 //        tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileBad)
 ////        tvBooks = newBooksFromJsonString(jsonBooksFile)
@@ -126,32 +126,32 @@ object App {
 
     }
 
-    // TODO
-    private fun readFileIntoJsonString(fp: String): jsonString {
+    private fun readFileIntoJsonString(fp: String): jsonString? {
         return try {
             val bufferedReader: BufferedReader = File(fp).bufferedReader()
             bufferedReader.use { it.readText() }
-        } catch (e: Exception) {
-            println("The requested file $fp does not exist..")
+        } catch (_: Exception) {
+            println("\n***The requested file $fp does not exist***\n")
+            null
         }
     }
 
-//    private fun newBooksFromJsonString(bksfp: String): Books {
-//        val mJsonBksStr: jsonString? = readFileIntoJsonString(bksfp)
-//        return if (mJsonBksStr != null) {
-//            jsonStringToBooks(mJsonBksStr)
-//        } else emptyList()
-//    }
-//
-//    private fun newBorrowersFromJsonString(brsfp: String): Borrowers {
-//        val mJsonBrsStr: String? = readFileIntoJsonString(brsfp)
-//        return if (mJsonBrsStr != null) {
-//            jsonStringToBorrowers(mJsonBrsStr)
-//        } else emptyList()
-//    }
-//
-//    private fun writeJsonStringToFile(js: String) {
-//        File("borrowers-after.json").bufferedWriter().use { out -> out.write(js) }
-//    }
-//
+    private fun newBooksFromJsonString(bksfp: String): Books {
+        val mJsonBksStr: jsonString? = readFileIntoJsonString(bksfp)
+        return if (mJsonBksStr != null) {
+            jsonStringToBooks(mJsonBksStr)
+        } else emptyList()
+    }
+
+    private fun newBorrowersFromJsonString(brsfp: String): Borrowers {
+        val mJsonBrsStr: String? = readFileIntoJsonString(brsfp)
+        return if (mJsonBrsStr != null) {
+            jsonStringToBorrowers(mJsonBrsStr)
+        } else emptyList()
+    }
+
+    private fun writeJsonStringToFile(js: String) {
+        File("borrowers-after.json").bufferedWriter().use { out -> out.write(js) }
+    }
+
 }
