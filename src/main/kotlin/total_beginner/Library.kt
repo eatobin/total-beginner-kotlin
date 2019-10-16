@@ -88,12 +88,16 @@ object Library {
         val klaxon = Klaxon()
         JsonReader(StringReader(jsonString)).use { reader ->
             val result = arrayListOf<Borrower>()
-            reader.beginArray {
-                while (reader.hasNext()) {
-                    val borrower = klaxon.parse<Borrower>(reader)
-                    if (borrower != null)
-                        result.add(borrower)
+            try {
+                reader.beginArray {
+                    while (reader.hasNext()) {
+                        val borrower = klaxon.parse<Borrower>(reader)
+                        if (borrower != null)
+                            result.add(borrower)
+                    }
                 }
+            } catch (_: Exception) {
+                println("\n***The JSON string:\n " + jsonString + "could not be parsed***\n")
             }
             return result
         }
@@ -103,12 +107,16 @@ object Library {
         val klaxon = Klaxon()
         JsonReader(StringReader(jsonString)).use { reader ->
             val result = arrayListOf<Book>()
-            reader.beginArray {
-                while (reader.hasNext()) {
-                    val book = klaxon.parse<Book>(reader)
-                    if (book != null)
-                        result.add(book)
+            try {
+                reader.beginArray {
+                    while (reader.hasNext()) {
+                        val book = klaxon.parse<Book>(reader)
+                        if (book != null)
+                            result.add(book)
+                    }
                 }
+            } catch (_: Exception) {
+                println("\n***The JSON string:\n " + jsonString + "could not be parsed***\n")
             }
             return result
         }
