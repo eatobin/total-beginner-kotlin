@@ -1,6 +1,6 @@
 [
   {
-    "title": "Book100",
+    "title": "Title100",
     "author": "Author100",
     "borrower": {
       "name": "Borrower100",
@@ -8,7 +8,7 @@
     }
   },
   {
-    "title": "Book200",
+    "title": "Title200",
     "author": "Author200",
     "borrower": null
   }

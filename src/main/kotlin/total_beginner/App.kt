@@ -136,7 +136,7 @@ object App {
         }
     }
 
-    private fun newBooksFromJsonString(bksfp: String): Books {
+    fun newBooksFromJsonString(bksfp: String): Books {
         val mJsonBksStr: jsonString? = readFileIntoJsonString(bksfp)
         return if (mJsonBksStr != null) {
             jsonStringToBooks(mJsonBksStr)
