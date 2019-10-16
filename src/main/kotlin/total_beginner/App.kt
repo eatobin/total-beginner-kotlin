@@ -111,10 +111,10 @@ object App {
         tvBooks = newBooksFromJsonString(jsonBooksFile)
         println(statusToString(tvBooks, tvBorrowers))
 
-//        println("And if we read in a file with mal-formed json content... like \"bad-borrowers.json\":")
-//        tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileBad)
-////        tvBooks = newBooksFromJsonString(jsonBooksFile)
-////        println(statusToString(tvBooks, tvBorrowers))
+        println("And if we read in a file with mal-formed json content... like \"bad-borrowers.json\":")
+        tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileBad)
+        tvBooks = newBooksFromJsonString(jsonBooksFile)
+        println(statusToString(tvBooks, tvBorrowers))
 ////
 ////        println("Or how about reading in an empty file... \"empty.json\" (for borrowers and books):")
 ////        tvBorrowers = newBorrowersFromJsonString(emptyFile)
