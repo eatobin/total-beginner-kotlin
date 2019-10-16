@@ -115,14 +115,14 @@ object App {
         tvBorrowers = newBorrowersFromJsonString(jsonBorrowersFileBad)
         tvBooks = newBooksFromJsonString(jsonBooksFile)
         println(statusToString(tvBooks, tvBorrowers))
-////
-////        println("Or how about reading in an empty file... \"empty.json\" (for borrowers and books):")
-////        tvBorrowers = newBorrowersFromJsonString(emptyFile)
-////        tvBooks = newBooksFromJsonString(emptyFile)
-////        println(statusToString(tvBooks, tvBorrowers))
-////
-////        println("And... that's all...")
-////        println("Thanks - bye!\n")
+
+        println("Or how about reading in an empty file... \"empty.json\" (for borrowers and books):")
+        tvBorrowers = newBorrowersFromJsonString(emptyFile)
+        tvBooks = newBooksFromJsonString(emptyFile)
+        println(statusToString(tvBooks, tvBorrowers))
+
+        println("And... that's all...")
+        println("Thanks - bye!\n")
 
     }
 
