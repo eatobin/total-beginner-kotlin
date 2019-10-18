@@ -14,6 +14,9 @@ plugins {
     application
 }
 
+group = "eatobin.com"
+version = "1.0-SNAPSHOT"
+
 repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
@@ -43,11 +46,11 @@ dependencies {
 
 val compileKotlin by tasks.getting(KotlinCompile::class) {
     // Customise the “compileKotlin” task.
-    kotlinOptions.jvmTarget = "11"
+    kotlinOptions.jvmTarget = "1.8"
 }
 val compileTestKotlin by tasks.getting(KotlinCompile::class) {
     // Customise the “compileTestKotlin” task.
-    kotlinOptions.jvmTarget = "11"
+    kotlinOptions.jvmTarget = "1.8"
 }
 
 tasks {
