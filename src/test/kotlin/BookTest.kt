@@ -1,5 +1,6 @@
 import Book.Companion.getAuthor
 import Book.Companion.getTitle
+import Book.Companion.setAuthor
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -17,16 +18,13 @@ class BookTest {
     fun testGetAuthor() {
         assertEquals("Author2", getAuthor(bk2))
     }
+
+    @Test
+    fun testSetAuthor() {
+        assertEquals(Book(title = "Title1", author = "Author11", borrower = br1), setAuthor("Author11", bk1))
+    }
 }
-//
-//    "getTitle should return the Book title" {
-//        getTitle(bk1).shouldBe("Title1")
-//    }
-//
-//    "getAuthor should return the Book author" {
-//        getAuthor(bk2).shouldBe("Author2")
-//    }
-//
+
 //    "setAuthor should set the Book author" {
 //        setAuthor("Author11", bk1).shouldBe(Book(title = "Title1", author = "Author11", borrower = br1))
 //    }
