@@ -1,3 +1,4 @@
+import Book.Companion.getAuthor
 import Book.Companion.getTitle
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -10,6 +11,11 @@ class BookTest {
     @Test
     fun testGetTitle() {
         assertEquals("Title1", getTitle(bk1))
+    }
+
+    @Test
+    fun testGetAuthor() {
+        assertEquals("Author2", getAuthor(bk2))
     }
 }
 //
