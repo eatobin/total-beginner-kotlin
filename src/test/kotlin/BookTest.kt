@@ -1,18 +1,17 @@
-//package total_beginner
-//
-//import io.kotlintest.shouldBe
-//import io.kotlintest.specs.StringSpec
-//import total_beginner.Book.Companion.getAuthor
-//import total_beginner.Book.Companion.getBorrower
-//import total_beginner.Book.Companion.getTitle
-//import total_beginner.Book.Companion.setAuthor
-//import total_beginner.Book.Companion.setBorrower
-//
-//private val br1 = Borrower("Borrower1", 1)
-//private val bk1 = Book("Title1", "Author1", br1)
-//private val bk2 = Book("Title2", "Author2")
-//
-//class BookTest : StringSpec({
+import Book.Companion.getTitle
+import kotlin.test.Test
+import kotlin.test.assertEquals
+
+private val br1 = Borrower("Borrower1", 1)
+private val bk1 = Book("Title1", "Author1", br1)
+private val bk2 = Book("Title2", "Author2")
+
+class BookTest {
+    @Test
+    fun testGetTitle() {
+        assertEquals("Title1", getTitle(bk1))
+    }
+}
 //
 //    "getTitle should return the Book title" {
 //        getTitle(bk1).shouldBe("Title1")
