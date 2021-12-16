@@ -1,5 +1,3 @@
-package total_beginner
-
 data class Borrower(val name: Name, val maxBooks: MaxBooks) {
 
     companion object {

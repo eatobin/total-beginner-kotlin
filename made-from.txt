@@ -1,3 +1,0 @@
-gradle init --dsl kotlin
-
-https://github.com/gradle/kotlin-dsl-samples
