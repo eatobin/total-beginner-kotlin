@@ -1,3 +1,4 @@
+import Book.Companion.bookToString
 import Book.Companion.getAuthor
 import Book.Companion.getBorrower
 import Book.Companion.getTitle
@@ -44,5 +45,15 @@ class BookTest {
             borrower = Borrower(name = "BorrowerNew", maxBooks = 111)
         )
         assertEquals(nbr, setBorrower(Borrower(name = "BorrowerNew", maxBooks = 111), bk2))
+    }
+
+    @Test
+    fun testBookToStringAvailable() {
+        assertEquals("Title1 by Author1; Checked out to Borrower1", bookToString(bk1))
+    }
+
+    @Test
+    fun testBookToStringNotAvailable() {
+        assertEquals("Title2 by Author2; Available", bookToString(bk2))
     }
 }
