@@ -1,1 +1,1 @@
-rootProject.name = "TotalBeginnerKotlin"
+rootProject.name = "total-beginner-kotlin"
