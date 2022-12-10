@@ -1,12 +1,12 @@
-import Book.Companion.getBorrower
-import com.beust.klaxon.JsonReader
-import com.beust.klaxon.Klaxon
 import Book.Companion.bookToString
+import Book.Companion.getBorrower
 import Book.Companion.getTitle
 import Book.Companion.setBorrower
 import Borrower.Companion.borrowerToString
 import Borrower.Companion.getMaxBooks
 import Borrower.Companion.getName
+import com.beust.klaxon.JsonReader
+import com.beust.klaxon.Klaxon
 import java.io.StringReader
 
 object Library {
