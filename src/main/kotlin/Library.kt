@@ -24,6 +24,7 @@ object Library {
     }
 
     fun getBooksForBorrower(br: Borrower, bks: Books): Books = bks.filter { getBorrower(it) == br }
+//    fun getBooksForBorrower(br: Borrower, bks: Books): Books = bks.filter { it.borrower == br }
 
     private fun numBooksOut(br: Borrower, bks: Books): Int = getBooksForBorrower(br, bks).count()
 
@@ -60,8 +61,7 @@ object Library {
 
     fun statusToString(bks: Books, brs: Borrowers): String {
         return "\n" + "--- Status Report of Test Library ---\n" + "\n" + libraryToString(
-            bks,
-            brs
+            bks, brs
         ) + "\n" + "\n" + bks.joinToString("\n") { bookToString(it) } + "\n" + "\n" + brs.joinToString("\n") {
             borrowerToString(
                 it
