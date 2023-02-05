@@ -24,9 +24,7 @@ data class Book(val title: Title, val author: Author, val borrower: Borrower? = 
         }
 
         fun bookToString(bk: Book): String {
-            return getTitle(bk) +
-                    " by " + getAuthor(bk) +
-                    "; " + availableString(bk)
+            return getTitle(bk) + " by " + getAuthor(bk) + "; " + availableString(bk)
         }
 
     }
